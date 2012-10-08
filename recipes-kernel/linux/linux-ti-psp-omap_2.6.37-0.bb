@@ -5,6 +5,7 @@ KERNEL_IMAGETYPE = "zImage"
 COMPATIBLE_MACHINE = "igep00x0"
 DEFAULT_PREFERENCE_igep00x0 = "1"
 
+SRCREV = "d0bb7affa53e22846c88345110e5c5655208a92d"
 SRC_URI = "git://git.mibtec.de/linux/kernel/ti-psp-omap;protocol=git;branch=mis-2.6.37.y \
 	   file://defconfig-mibtec "
 
