@@ -9,7 +9,7 @@ SRCREV = "d0bb7affa53e22846c88345110e5c5655208a92d"
 SRC_URI = "git://git.mibtec.de/ti-psp-omap;protocol=git;branch=mis-2.6.37.y \
 	   file://defconfig-mibtec "
 
-S = "${WORKDIR}/ti-psp-omap"
+S = "${WORKDIR}/git"
 
 do_configure_prepend () {
 	cp  ${WORKDIR}/defconfig-mibtec ${WORKDIR}/defconfig
