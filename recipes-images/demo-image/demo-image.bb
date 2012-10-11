@@ -37,20 +37,14 @@ XORG_STUFF = " xserver-xorg \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-glx \
             "
-GPE_STUFF = " bluez-utils-dbus \
-            matchbox \
-            matchbox2 \
+GPE_STUFF = "  \
             matchbox-wm \
-            gpe-conf \
             sato-icon-theme \
             mplayer \
-            fbv \
             xcursor-transparent-theme \
             rxvt-unicode \
-            xst \
             xhost \
             xrdb \
-            gpe-session-scripts \
             gpe-icons \
             gpe-sketchbook \
             gpe-gallery \
@@ -81,9 +75,7 @@ IMAGE_INSTALL = "task-boot \
             ${DISTRO_SSH_DAEMON} \
             ${KERNEL_MODS} \
             ${XORG_STUFF} \
-            ${GPE_STUFF} \
             e2fsprogs-mke2fs \
-            angstrom-version \
             nfs-utils-client \
             wireless-tools \
             bluez4 \
@@ -96,12 +88,9 @@ IMAGE_INSTALL = "task-boot \
 	    psplash-mis \
             psplash-support \
             portmap \
-            pvb \
 	    alsa-utils-amixer \
 	    alsa-utils-aplay \
 	    alsa-utils-alsamixer \
-	    demo-stuff \
-            xev \
             lsof \
             xset \
             xclock \
@@ -113,15 +102,11 @@ IMAGE_INSTALL = "task-boot \
             tslib-tests \
             mtd-utils \
             strace \
-            cron \
+            cronie \
             x11vnc \
-            omapfbplay \
             ethtool \
-            avrdude \
             devmem2 \
-	    qt4-x11-free-gles \
 	    ncurses \
-	    firefox \
 	    tcl \
 	    tk \
 	    xinetd \
@@ -129,7 +114,6 @@ IMAGE_INSTALL = "task-boot \
 	    boost-program-options \
 	    bash \
 	    procps \
-	    xmessage \
 	    dhcp-server \
 	   "
 
