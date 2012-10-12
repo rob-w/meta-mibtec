@@ -12,6 +12,6 @@ SRC_URI = "git://git.mibtec.de/linux/kernel/mibtec-kernels;protocol=git;branch=m
 S = "${WORKDIR}/git"
 
 do_configure_prepend () {
-	cp  ${WORKDIR}/defconfig-mibtec ${S}/igep00x0_config
+	cp  ${WORKDIR}/defconfig-mibtec ${S}/defconfig
 }
 
