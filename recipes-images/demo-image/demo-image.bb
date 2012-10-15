@@ -4,8 +4,6 @@
 ANGSTROM_EXTRA_INSTALL ?= ""
 DISTRO_SSH_DAEMON ?= "dropbear"
 
-IMAGE_PREPROCESS_COMMAND = "create_etc_timestamp"
-
 KERNEL_MODS = "kernel-module-libertas-sdio \
             kernel-module-libertas \
             kernel-module-cfg80211 \
@@ -37,8 +35,8 @@ XORG_STUFF = " xserver-xorg \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-glx \
             "
-GPE_STUFF = "  \
-            matchbox-wm \
+
+GPE_STUFF = " matchbox-wm \
             sato-icon-theme \
             mplayer \
             xcursor-transparent-theme \
@@ -70,21 +68,24 @@ GST_STUFF = "gst-meta-base\
             gst-plugins-bad \
             gst-plugins-ugly \
            "
+
+CLUTTER_TASK = "task-core-clutter-core \
+            task-core-clutter-tests \
+            task-core-clutter-apps \
+           "
+
 IMAGE_INSTALL = "task-boot \
             util-linux-mount util-linux-umount \
             ${DISTRO_SSH_DAEMON} \
             ${KERNEL_MODS} \
             ${XORG_STUFF} \
+            ${CLUTTER_TASK \
             e2fsprogs-mke2fs \
             nfs-utils-client \
             wireless-tools \
             bluez4 \
             wpa-supplicant \
             firmware-libertas \
-            omap3-sgx-modules \
-            libgles-omap3 \
-            libgles-omap3-x11wsegl \
-            libgles-omap3-x11demos \
 	    psplash-mis \
             psplash-support \
             portmap \
