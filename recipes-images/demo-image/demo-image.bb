@@ -4,6 +4,9 @@
 ANGSTROM_EXTRA_INSTALL ?= ""
 DISTRO_SSH_DAEMON ?= "dropbear"
 
+IMAGE_FEATURES += "apps-console-core package-management"
+inherit core-image
+
 KERNEL_MODS = "kernel-module-libertas-sdio \
             kernel-module-libertas \
             kernel-module-cfg80211 \
@@ -15,7 +18,7 @@ KERNEL_MODS = "kernel-module-libertas-sdio \
             kernel-module-usb-storage \
             kernel-module-mousedev \
             kernel-module-twl4030-wdt \
-	    kernel-module-smsc911x \
+            kernel-module-smsc911x \
             kernel-module-edt-ft5x06 \
             kernel-module-ext2 \
             kernel-module-ext3 \
@@ -74,7 +77,9 @@ CLUTTER_TASK = "task-core-clutter-core \
             task-core-clutter-apps \
            "
 
-IMAGE_INSTALL = "task-boot \
+IMAGE_INSTALL += "task-core-boot \
+            ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
+            ${CORE_IMAGE_EXTRA_INSTALL} \
             util-linux-mount util-linux-umount \
             ${DISTRO_SSH_DAEMON} \
             ${KERNEL_MODS} \
@@ -120,6 +125,4 @@ IMAGE_INSTALL = "task-boot \
 
 export IMAGE_BASENAME = "demo-image"
 IMAGE_LINGUAS = ""
-
-inherit image
 
