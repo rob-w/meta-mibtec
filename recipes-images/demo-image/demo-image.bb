@@ -1,10 +1,17 @@
-#Angstrom minimalist image
-#gives you a small images with ssh access
+#
+# Copyright (C) 2007 OpenedHand Ltd.
+# base on core-image-minimal
+#
+DESCRIPTION = "Demo image for MIBTEC Boards"
 
-ANGSTROM_EXTRA_INSTALL ?= ""
-DISTRO_SSH_DAEMON ?= "dropbear"
+IMAGE_INSTALL = "task-core-boot ${ROOTFS_PKGMANAGE_BOOTSTRAP} ${CORE_IMAGE_EXTRA_INSTALL}"
+
+IMAGE_LINGUAS = " "
+
+LICENSE = "MIT"
 
 IMAGE_FEATURES += "apps-console-core package-management"
+
 inherit core-image
 
 KERNEL_MODS = "kernel-module-libertas-sdio \
@@ -39,28 +46,32 @@ XORG_STUFF = " xserver-xorg \
             xserver-xorg-extension-glx \
             "
 
-GPE_STUFF = " matchbox-wm \
+UI_STUFF = " matchbox-wm \
             sato-icon-theme \
-            mplayer \
             xcursor-transparent-theme \
             rxvt-unicode \
             xhost \
             xrdb \
-            gpe-icons \
-            gpe-sketchbook \
-            gpe-gallery \
-            gpe-aerial \
-            startup-monitor \
-            libgtkstylus \
-            libgpewidget-bin \
             xauth \
+            hicolor-icon-theme \
             gdk-pixbuf-loader-png \
             gdk-pixbuf-loader-xpm \
             gdk-pixbuf-loader-jpeg \
             pango-module-basic-x \
             pango-module-basic-fc \
             ttf-bitstream-vera\
-"
+            gtk-engine-clearlooks \
+            gtk-theme-clearlooks \
+            x11vnc \
+            xdpyinfo \
+            xset \
+            task-core-gtk-directfb \
+            "
+
+ALSA_STUFF = "alsa-utils-amixer \
+            alsa-utils-aplay \
+            alsa-utils-alsamixer \
+            "
 
 GST_STUFF = "gst-meta-base\
             gstreamer \
@@ -75,54 +86,37 @@ GST_STUFF = "gst-meta-base\
 CLUTTER_TASK = "task-core-clutter-core \
             task-core-clutter-tests \
             task-core-clutter-apps \
-           "
+            "
 
-IMAGE_INSTALL += "task-core-boot \
-            ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
-            ${CORE_IMAGE_EXTRA_INSTALL} \
-            util-linux-mount util-linux-umount \
-            ${DISTRO_SSH_DAEMON} \
-            ${KERNEL_MODS} \
-            ${XORG_STUFF} \
-            ${CLUTTER_TASK \
-            e2fsprogs-mke2fs \
+NETWORK_STUFF = "openssh \
+            nfs-utils \
             nfs-utils-client \
             wireless-tools \
             bluez4 \
             wpa-supplicant \
-            firmware-libertas \
-	    psplash-mis \
+            ethtool \
+            xinetd \
+            "
+
+IMAGE_INSTALL += "mtd-utils \
+            ${KERNEL_MODS} \
+            ${XORG_STUFF} \
+            ${CLUTTER_TASK} \
+            ${ALSA_STUFF} \
+            ${UI_STUFF} \
+            ${NETWORK_STUFF} \
+            devmem2 \
+            psplash-mis \
             psplash-support \
-            portmap \
-	    alsa-utils-amixer \
-	    alsa-utils-aplay \
-	    alsa-utils-alsamixer \
             lsof \
-            xset \
-            xclock \
-            xdpyinfo \
-            xinput-calibrator \
-            gtk-engine-clearlooks \
-            gtk-theme-clearlooks \
-            tslib-calibrate \
-            tslib-tests \
-            mtd-utils \
+            systemd \
             strace \
             cronie \
-            x11vnc \
-            ethtool \
-            devmem2 \
-	    ncurses \
-	    tcl \
-	    tk \
-	    xinetd \
-	    boost \
-	    boost-program-options \
-	    bash \
-	    procps \
-	    dhcp-server \
-	   "
-
-export IMAGE_BASENAME = "demo-image"
-IMAGE_LINGUAS = ""
-
+            ncurses \
+            tcl \
+            tk \
+            boost \
+            boost-program-options \
+            bash \
+            procps \
+            "
