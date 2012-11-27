@@ -73,6 +73,13 @@ ALSA_STUFF = "alsa-utils-amixer \
             alsa-utils-alsamixer \
             "
 
+3D_STUFF = "omap3-sgx-modules \
+            libgles-omap3 \
+            libgles-omap3-x11wsegl \
+            libgles-omap3-x11demos \
+            fbset \
+            "
+
 GST_STUFF = "gst-meta-base\
             gstreamer \
             gst-plugin-mad \
@@ -105,6 +112,7 @@ IMAGE_INSTALL += "mtd-utils \
             ${ALSA_STUFF} \
             ${UI_STUFF} \
             ${NETWORK_STUFF} \
+            ${3D_STUFF} \
             devmem2 \
             psplash-mis \
             psplash-support \
