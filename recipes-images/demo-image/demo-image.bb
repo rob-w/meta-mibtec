@@ -44,6 +44,7 @@ XORG_STUFF = " xserver-xorg \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-glx \
+            xinput-calibrator \
             "
 
 UI_STUFF = " matchbox-wm \
@@ -66,6 +67,7 @@ UI_STUFF = " matchbox-wm \
             xdpyinfo \
             xset \
             task-core-gtk-directfb \
+            fbida \
             "
 
 ALSA_STUFF = "alsa-utils-amixer \
