@@ -129,4 +129,5 @@ IMAGE_INSTALL += "mtd-utils \
             boost-program-options \
             bash \
             procps \
+            qt4-embedded \
             "
