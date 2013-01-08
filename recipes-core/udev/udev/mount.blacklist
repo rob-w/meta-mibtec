@@ -1,0 +1,15 @@
+/dev/loop
+/dev/loop0
+/dev/loop1
+/dev/loop2
+/dev/loop3
+/dev/loop4
+/dev/loop5
+/dev/loop6
+/dev/loop7
+/dev/ram
+/dev/mtdblock0
+/dev/mtdblock1
+/dev/mtdblock2
+/dev/mmcblk0
+/dev/sda
