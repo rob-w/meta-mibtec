@@ -44,6 +44,7 @@ XORG_STUFF = " xserver-xorg \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-glx \
+            xinput \
             "
 
 UI_STUFF = " matchbox-wm \
