@@ -128,4 +128,5 @@ IMAGE_INSTALL += "mtd-utils \
             bash \
             procps \
             qt4-embedded \
+            rs485-tool \
             "
