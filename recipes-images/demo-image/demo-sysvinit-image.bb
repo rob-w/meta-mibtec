@@ -44,6 +44,7 @@ XORG_STUFF = " xserver-xorg \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-glx \
+            xinput \
             "
 
 UI_STUFF = " matchbox-wm \
@@ -127,4 +128,5 @@ IMAGE_INSTALL += "mtd-utils \
             bash \
             procps \
             qt4-embedded \
+            rs485-tool \
             "
