@@ -11,7 +11,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
                     file://src/gudev/COPYING;md5=fb494485a7d0505308cb68e4997cc266"
 
 # Needed for udev-extras
-DEPENDS = "gperf-native usbutils acl glib-2.0"
+DEPENDS = "gperf-native usbutils acl glib-2.0 kmod"
 
 PR = "r4"
 
