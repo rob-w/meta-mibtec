@@ -85,7 +85,7 @@ RDEPENDS_${PN}-consolekit += "${@base_contains('DISTRO_FEATURES', 'x11', 'consol
 do_install () {
 	install -d ${D}${usrsbindir} ${D}${sbindir}
 	oe_runmake 'DESTDIR=${D}' INSTALL=install install
-	ln -sf ${base_libdir}/udev/udevd ${D}/${sbindir}/udevd
+	ln -sf ${base_libdir}/udev/udev/udevd ${D}/${sbindir}/udevd
 
 	install -d ${D}${sysconfdir}/init.d
 	install -m 0755 ${WORKDIR}/init ${D}${sysconfdir}/init.d/udev

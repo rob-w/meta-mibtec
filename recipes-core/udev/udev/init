@@ -13,7 +13,7 @@ export TZ=/etc/localtime
 
 [ -d /sys/class ] || exit 1
 [ -r /proc/mounts ] || exit 1
-[ -x /sbin/udevd ] || exit 1
+[ -x /usr/sbin/udevd ] || exit 1
 [ -f /etc/default/udev ] && . /etc/default/udev
 [ -f /etc/udev/udev.conf ] && . /etc/udev/udev.conf
 
@@ -46,7 +46,7 @@ kill_udevd > "/dev/null" 2>&1
 
 # trigger the sorted events
 echo -e '\000\000\000\000' > /proc/sys/kernel/hotplug
-/sbin/udevd -d
+/usr/sbin/udevd -d
 
 /usr/bin/udevadm control --env STARTUP=1
 if [ "$not_first_boot" != "" ];then
