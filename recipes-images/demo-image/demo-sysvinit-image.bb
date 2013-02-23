@@ -63,7 +63,6 @@ UI_STUFF = " matchbox-wm \
             xdpyinfo \
             xset \
             task-core-gtk-directfb \
-            fbida \
             "
 
 ALSA_STUFF = "alsa-utils-amixer \
