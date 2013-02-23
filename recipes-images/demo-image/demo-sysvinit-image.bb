@@ -20,16 +20,12 @@ KERNEL_MODS = "kernel-module-libertas-sdio \
             kernel-module-btmrvl \
             firmware-libertas \
             kernel-module-cfg80211 \
-            kernel-module-mbcache \
             kernel-module-nls-iso8859-1 \
             kernel-module-usb-storage \
             kernel-module-mousedev \
             kernel-module-twl4030-wdt \
             kernel-module-smsc911x \
             kernel-module-edt-ft5x06 \
-            kernel-module-ext2 \
-            kernel-module-ext3 \
-            kernel-module-ext4 \
             kernel-module-ntfs \
             "
 
@@ -129,4 +125,5 @@ IMAGE_INSTALL += "mtd-utils \
             procps \
             qt4-embedded \
             rs485-tool \
+            omapfbplay \
             "
