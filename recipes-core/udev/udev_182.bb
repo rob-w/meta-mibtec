@@ -33,8 +33,8 @@ SRC_URI += " \
        file://init \
        file://mount.blacklist \
 "
-SRC_URI[md5sum] = "2afd20ee1c790eac6d7abe0498ebb414"
-SRC_URI[sha256sum] = "0f753ad9c3022a074d1c052bcee9139581db825283771ac78c0be0d1de109d0c"
+SRC_URI[md5sum] = "1b964456177fbf48023dfee7db3a708d"
+SRC_URI[sha256sum] = "7857ed19fafd8f3ca8de410194e8c7336e9eb8a20626ea8a4ba6449b017faba4"
 
 inherit update-rc.d autotools
 EXTRA_OECONF += " \
