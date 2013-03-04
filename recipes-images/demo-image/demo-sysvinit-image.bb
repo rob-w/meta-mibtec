@@ -63,6 +63,7 @@ UI_STUFF = " matchbox-wm \
             xdpyinfo \
             xset \
             task-core-gtk-directfb \
+            fbv \
             "
 
 ALSA_STUFF = "alsa-utils-amixer \
@@ -72,6 +73,7 @@ ALSA_STUFF = "alsa-utils-amixer \
 
 3D_STUFF = "omap3-sgx-modules \
             libgles-omap3 \
+            libgles-omap3-rawdemos \
             libgles-omap3-x11wsegl \
             libgles-omap3-x11demos \
             fbset \
