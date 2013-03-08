@@ -102,6 +102,8 @@ NETWORK_STUFF = "dropbear \
             wpa-supplicant \
             ethtool \
             xinetd \
+            iproute2 \
+            iperf \
             "
 
 IMAGE_INSTALL += "mtd-utils \
