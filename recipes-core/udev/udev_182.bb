@@ -44,7 +44,7 @@ EXTRA_OECONF += " \
                   ac_cv_file__usr_share_hwdata_pci_ids=no \
                   ac_cv_file__usr_share_misc_pci_ids=yes \
                   --sbindir=${base_sbindir} \
-                  --libexecdir=${base_libdir}/udev \
+                  --libexecdir=${base_libdir} \
                   --with-rootlibdir=${base_libdir} \
                   --disable-gtk-doc-html \
                   --with-systemdsystemunitdir=${base_libdir}/systemd/system/ \
