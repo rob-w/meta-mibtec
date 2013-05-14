@@ -5,7 +5,7 @@ KERNEL_IMAGETYPE = "zImage"
 COMPATIBLE_MACHINE = "igep00x0"
 DEFAULT_PREFERENCE_igep00x0 = "1"
 
-SRCREV = "d0bb7affa53e22846c88345110e5c5655208a92d"
+SRCREV = "45de47506f4eb94841ade37611779593c6c7c499"
 SRC_URI = "git://git.mibtec.de/linux/kernel/mibtec-kernels;protocol=git;branch=mis-2.6.37.y \
 	   file://defconfig-mibtec "
 
