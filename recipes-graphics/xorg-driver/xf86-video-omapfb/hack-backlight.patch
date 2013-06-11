@@ -1,0 +1,38 @@
+--- a/src/omapfb-driver.c	2012-07-31 15:01:17.134852417 +0200
++++ b/src/omapfb-driver.c-new	2012-07-31 15:01:55.018850729 +0200
+@@ -74,6 +74,7 @@
+ static Bool OMAPFBEnterVT(int scrnIndex, int flags);
+ static void OMAPFBLeaveVT(int scrnIndex, int flags);
+ static Bool OMAPFBSwitchMode(int scrnIndex, DisplayModePtr mode, int flags);
++static Bool OMAPFBSaveScreen(ScreenPtr pScreen, int mode);
+ 
+ static Bool
+ OMAPFBEnsureRec(ScrnInfoPtr pScrn)
+@@ -639,6 +640,8 @@
+ 	if (!ofb->dss)
+ 		OMAPFBXvScreenInit(pScreen);
+ 
++	pScreen->SaveScreen = OMAPFBSaveScreen;
++	
+ 	/* Initialize RANDR support */
+ 	xf86CrtcScreenInit(pScreen);
+ 
+@@ -712,6 +715,18 @@
+ }
+ 
+ static Bool
++OMAPFBSaveScreen(ScreenPtr pScreen, int mode)
++{
++	Bool on = xf86IsUnblank(mode);
++	
++	if (mode == 0)
++		system("echo 10 > /sys/class/leds/pwm1/brightness");
++	if (mode == 1)
++		system("echo 255 > /sys/class/leds/pwm1/brightness");
++	return TRUE;
++}
++
++static Bool
+ OMAPFBDriverFunc(ScrnInfoPtr pScrn, xorgDriverFuncOp op, pointer ptr)
+ {
+ 	xorgHWFlags *flag;
