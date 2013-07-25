@@ -39,6 +39,7 @@ SRC_URI[sha256sum] = "7857ed19fafd8f3ca8de410194e8c7336e9eb8a20626ea8a4ba6449b01
 inherit update-rc.d autotools
 EXTRA_OECONF += " \
                   --disable-introspection \
+                  --with-firmware-path=/lib/firmware \
                   --with-pci-ids-path=/usr/share/misc \
                   ac_cv_file__usr_share_pci_ids=no \
                   ac_cv_file__usr_share_hwdata_pci_ids=no \
