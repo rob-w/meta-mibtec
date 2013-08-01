@@ -20,12 +20,6 @@ KERNEL_MODS = "kernel-module-libertas-sdio \
             kernel-module-btmrvl \
             firmware-libertas \
             kernel-module-cfg80211 \
-            kernel-module-nls-iso8859-1 \
-            kernel-module-usb-storage \
-            kernel-module-mousedev \
-            kernel-module-twl4030-wdt \
-            kernel-module-smsc911x \
-            kernel-module-edt-ft5x06 \
             kernel-module-ntfs \
             "
 
@@ -62,7 +56,6 @@ UI_STUFF = " matchbox-wm \
             x11vnc \
             xdpyinfo \
             xset \
-            task-core-gtk-directfb \
             fbv \
             "
 
@@ -107,26 +100,17 @@ NETWORK_STUFF = "dropbear \
             "
 
 IMAGE_INSTALL += "mtd-utils \
-            ${KERNEL_MODS} \
             ${XORG_STUFF} \
-            ${CLUTTER_TASK} \
             ${ALSA_STUFF} \
             ${UI_STUFF} \
             ${NETWORK_STUFF} \
-            ${3D_STUFF} \
             devmem2 \
             psplash-mis \
             psplash-support \
             lsof \
             strace \
             ncurses \
-            tcl \
-            tk \
-            boost \
-            boost-program-options \
             bash \
             procps \
-            qt4-embedded \
             rs485-tool \
-            omapfbplay \
             "
