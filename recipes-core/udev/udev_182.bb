@@ -39,12 +39,13 @@ SRC_URI[sha256sum] = "7857ed19fafd8f3ca8de410194e8c7336e9eb8a20626ea8a4ba6449b01
 inherit update-rc.d autotools
 EXTRA_OECONF += " \
                   --disable-introspection \
+                  --with-firmware-path=/lib/firmware \
                   --with-pci-ids-path=/usr/share/misc \
                   ac_cv_file__usr_share_pci_ids=no \
                   ac_cv_file__usr_share_hwdata_pci_ids=no \
                   ac_cv_file__usr_share_misc_pci_ids=yes \
                   --sbindir=${base_sbindir} \
-                  --libexecdir=${base_libdir}/udev \
+                  --libexecdir=${base_libdir} \
                   --with-rootlibdir=${base_libdir} \
                   --disable-gtk-doc-html \
                   --with-systemdsystemunitdir=${base_libdir}/systemd/system/ \
@@ -85,7 +86,7 @@ RDEPENDS_${PN}-consolekit += "${@base_contains('DISTRO_FEATURES', 'x11', 'consol
 do_install () {
 	install -d ${D}${usrsbindir} ${D}${sbindir}
 	oe_runmake 'DESTDIR=${D}' INSTALL=install install
-	ln -sf ${base_libdir}/udev/udev/udevd ${D}/${sbindir}/udevd
+	ln -sf ${base_libdir}/udev/udevd ${D}/${sbindir}/udevd
 
 	install -d ${D}${sysconfdir}/init.d
 	install -m 0755 ${WORKDIR}/init ${D}${sysconfdir}/init.d/udev
