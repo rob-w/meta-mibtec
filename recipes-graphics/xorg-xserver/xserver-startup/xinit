@@ -12,6 +12,8 @@ while [ "$I" -lt "1" ]
 do
 	CNT=0
 	killall Xorg
+	rm -R /tmp/.X*
+
 	Xorg -s 0 -br -noreset -dpms &
 	while [ "$CNT" -lt "5" ]
 	do
