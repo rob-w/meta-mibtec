@@ -19,19 +19,19 @@ do
 	fi
 done
 
-automount() {	
+automount() {
 	! test -d "/media/$name" && mkdir -p "/media/$name"
-	
+
 	if ! $MOUNT -t auto -o sync $DEVNAME "/media/$name"
 	then
 		#logger "mount.sh/automount" "$MOUNT -t auto $DEVNAME \"/media/$name\" failed!"
-		rm_dir "/media/$name"
+		echo not removing
 	else
 		logger "mount.sh/automount" "Auto-mount of [/media/$name] successful"
 		touch "/tmp/.automount-$name"
 	fi
 }
-	
+
 rm_dir() {
 	# We do not want to rm -r populated directories
 	if test "`find "$1" | wc -l | tr -d " "`" -lt 2 -a -d "$1"
