@@ -13,3 +13,5 @@
 /dev/mtdblock2
 /dev/mmcblk0
 /dev/sda
+/dev/mmcblk1p1
+/dev/mmcblk1p2

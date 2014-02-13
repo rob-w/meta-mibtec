@@ -4,6 +4,5 @@ devpts               /dev/pts             devpts     mode=0620,gid=5       0  0
 usbdevfs             /proc/bus/usb        usbdevfs   noauto                0  0
 tmpfs                /var/volatile        tmpfs      defaults              0  0
 tmpfs                /media/ram           tmpfs      defaults              0  0
-# uncomment this if your device has a SD/MMC/Transflash slot
-/dev/mmcblk0p1       /media/card          auto       defaults,sync,noauto  0  0
-
+/dev/mmcblk1p1       /media/card          auto       defaults,sync         0  0
+10.0.0.77:/data      /media/net           nfs        defaults,noauto       0  0

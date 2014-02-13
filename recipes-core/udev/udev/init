@@ -33,8 +33,7 @@ LANG=C awk "\$2 == \"/dev\" && \$3 == \"devtmpfs\" { exit 1 }" /proc/mounts && {
 	mkdir -m 1777 /dev/shm
 }
 
-mkdir /dev/.udev           
-ln -s /dev/.udev /run
+mkdir /dev/.udev
 
 if [ ! -e "/lib/modules/$(uname -r)"/modules.dep ] ; then
 	mkdir -p /lib/modules/$(uname -r)
