@@ -43,6 +43,7 @@ rm_dir() {
 }
 
 if [ "$ACTION" = "add" ] && [ -n "$DEVNAME" ]; then
+   /sbin/fsck -aM $DEVNAME > /dev/console
 	if [ -x "$PMOUNT" ]; then
 		$PMOUNT $DEVNAME 2> /dev/null
 	elif [ -x $MOUNT ]; then
