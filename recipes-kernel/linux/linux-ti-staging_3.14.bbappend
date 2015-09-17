@@ -1,8 +1,8 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-3.14:"
 
-KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb"
+KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb am437x-mispanel070F006.dtb"
 
-SRCREV = "c4b05ab50660432006adc8e91c798a68dd0141f1"
+SRCREV = "95d59a8ac5c9656b41be2c83290a28bbb87ec98b"
 PV = "3.14.43"
 
 #SRCREV = "7eee2f14f040c8c8c4761c3f4f79c148590294d4"

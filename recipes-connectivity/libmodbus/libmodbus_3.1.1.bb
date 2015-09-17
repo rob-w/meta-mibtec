@@ -15,11 +15,11 @@ inherit autotools
 # make install doesn't cover the shared lib
 # make install-shared is just broken (no symlinks)
 #
-do_install_prepend () {
-    install -d ${D}${libdir}
-    install -d ${STAGING_INCDIR}/modbus
-    oe_libinstall  -so libmodbus ${D}${libdir}
-    install -m 0644 src/*.h ${STAGING_INCDIR}/modbus/
-}
+#do_install_prepend () {
+#    install -d ${D}${libdir}
+#    install -d ${STAGING_INCDIR}/modbus
+#    oe_libinstall  -so libmodbus ${D}${libdir}
+#    install -m 0644 src/*.h ${STAGING_INCDIR}/modbus/
+#}
 
 
