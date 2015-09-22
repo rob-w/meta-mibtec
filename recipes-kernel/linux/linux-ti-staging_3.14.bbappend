@@ -1,12 +1,9 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-3.14:"
 
-KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb am437x-mispanel070F006.dtb"
+KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb am437x-mispanel070f.dtb am437x-mispanel070h.dtb"
 
-SRCREV = "95d59a8ac5c9656b41be2c83290a28bbb87ec98b"
+SRCREV = "f33bb52883ff1d4f503e7a273e8a5d24e6cd00d9"
 PV = "3.14.43"
-
-#SRCREV = "7eee2f14f040c8c8c4761c3f4f79c148590294d4"
-#PV = "3.14.35"
 BRANCH = "mis-3.14.y"
 
 KERNEL_GIT_URI = "git://git.mibtec.de/linux/kernel/mibtec-kernels"
