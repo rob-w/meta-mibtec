@@ -4,23 +4,35 @@
 #
 DESCRIPTION = "Demo image for MIBTEC Boards"
 
-IMAGE_INSTALL = "task-core-boot ${ROOTFS_PKGMANAGE_BOOTSTRAP} ${CORE_IMAGE_EXTRA_INSTALL}"
+IMAGE_INSTALL = "${ROOTFS_PKGMANAGE_BOOTSTRAP} ${CORE_IMAGE_EXTRA_INSTALL}"
 
 IMAGE_LINGUAS = " "
 
 LICENSE = "MIT"
 
-IMAGE_FEATURES += "package-management"
+IMAGE_FEATURES += "package-management ssh-server-openssh"
 
 inherit core-image
 
-KERNEL_MODS = "kernel-module-libertas-sdio \
-            kernel-module-libertas \
-            kernel-module-cfg80211 \
-            kernel-module-btmrvl \
-            firmware-libertas \
-            kernel-module-cfg80211 \
-            kernel-module-ntfs \
+KERNEL_STUFF = "kernel \
+            kernel-devicetree \
+            kernel-module-dwc3 \
+            kernel-module-dwc3-omap \
+            kernel-module-xhci-plat-hcd \
+            kernel-module-industrialio \
+            kernel-module-kfifo-buf \
+            kernel-module-ti-am335x-adc \
+            kernel-module-edt-ft5x06 \
+            module-init-tools-depmod \
+            "
+
+SYSTEM_STUFF = "udev \
+            udev-extraconf \
+            busybox \
+            sysvinit \
+            initscripts \
+            stat \
+            omapconf \
             "
 
 XORG_STUFF = " xserver-xorg \
@@ -34,29 +46,31 @@ XORG_STUFF = " xserver-xorg \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-dri2 \
             xserver-xorg-extension-glx \
+            xserver-xf86-config \
+            xserver-startup \
+            x11vnc \
             xinput \
+            xhost \
+            xrdb \
+            xauth \
+            xinput-calibrator \
+            xdpyinfo \
+            xset \
+            xmessage \
+            psplash \
             "
 
 UI_STUFF = " matchbox-wm \
             sato-icon-theme \
             xcursor-transparent-theme \
             rxvt-unicode \
-            xhost \
-            xrdb \
-            xauth \
             hicolor-icon-theme \
             gdk-pixbuf-loader-png \
             gdk-pixbuf-loader-xpm \
             gdk-pixbuf-loader-jpeg \
-            pango-module-basic-x \
-            pango-module-basic-fc \
             ttf-bitstream-vera\
             gtk-engine-clearlooks \
             gtk-theme-clearlooks \
-            x11vnc \
-            xdpyinfo \
-            xset \
-            fbv \
             "
 
 ALSA_STUFF = "alsa-utils-amixer \
@@ -67,8 +81,6 @@ ALSA_STUFF = "alsa-utils-amixer \
 3D_STUFF = "omap3-sgx-modules \
             libgles-omap3 \
             libgles-omap3-rawdemos \
-            libgles-omap3-x11wsegl \
-            libgles-omap3-x11demos \
             fbset \
             "
 
@@ -82,13 +94,7 @@ GST_STUFF = "gst-meta-base\
             gst-plugins-ugly \
            "
 
-CLUTTER_TASK = "task-core-clutter-core \
-            task-core-clutter-tests \
-            task-core-clutter-apps \
-            "
-
-NETWORK_STUFF = "dropbear \
-            nfs-utils \
+NETWORK_STUFF = "nfs-utils \
             nfs-utils-client \
             wireless-tools \
             bluez4 \
@@ -100,17 +106,26 @@ NETWORK_STUFF = "dropbear \
             "
 
 IMAGE_INSTALL += "mtd-utils \
+            ${KERNEL_STUFF} \
+            ${SYSTEM_STUFF} \
             ${XORG_STUFF} \
             ${ALSA_STUFF} \
             ${UI_STUFF} \
             ${NETWORK_STUFF} \
             devmem2 \
+            cpufrequtils \
+            e2fsprogs \
+            dosfstools \
             psplash-mis \
-            psplash-support \
             lsof \
+            cronie \
+            watchdog \
             strace \
+            gdb \
             ncurses \
             bash \
+            screen \
             procps \
-            rs485-tool \
+            tzdata \
+            tzdata-europe \
             "
