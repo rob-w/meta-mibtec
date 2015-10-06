@@ -2,7 +2,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-3.14:"
 
 KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb am437x-mispanel070f.dtb am437x-mispanel070h.dtb"
 
-SRCREV = "afd029b86c646d13b3eb3e5bfa1715856587766a"
+SRCREV = "4ad8ff97d983ef3e59a7fbe72053f5ac3d75d44a"
 PV = "3.14.43"
 BRANCH = "mis-3.14.y"
 
