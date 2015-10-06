@@ -12,7 +12,7 @@ while [ "$I" -lt "1" ]
 do
 	CNT=0
 	killall Xorg
-	Xorg -s 0 -br -noreset -dpms &
+	Xorg -nolisten tcp -s 0 -br -noreset -dpms &
 	while [ "$CNT" -lt "5" ]
 	do
 		xset s reset
