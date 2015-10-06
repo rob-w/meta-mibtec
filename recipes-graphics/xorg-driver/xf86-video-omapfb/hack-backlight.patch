@@ -1,34 +1,34 @@
---- a/src/omapfb-driver.c	2012-07-31 15:01:17.134852417 +0200
-+++ b/src/omapfb-driver.c-new	2012-07-31 15:01:55.018850729 +0200
-@@ -74,6 +74,7 @@
- static Bool OMAPFBEnterVT(int scrnIndex, int flags);
- static void OMAPFBLeaveVT(int scrnIndex, int flags);
- static Bool OMAPFBSwitchMode(int scrnIndex, DisplayModePtr mode, int flags);
+--- a/src/omapfb-driver.c	2015-10-01 09:01:04.933064864 +0200
++++ b/src/omapfb-driver.c-new	2015-10-01 09:09:27.850531133 +0200
+@@ -76,6 +76,7 @@
+ static Bool OMAPFBEnterVT(VT_FUNC_ARGS_DECL);
+ static void OMAPFBLeaveVT(VT_FUNC_ARGS_DECL);
+ static Bool OMAPFBSwitchMode(SWITCH_MODE_ARGS_DECL);
 +static Bool OMAPFBSaveScreen(ScreenPtr pScreen, int mode);
  
  static Bool
  OMAPFBEnsureRec(ScrnInfoPtr pScrn)
-@@ -639,6 +640,8 @@
- 	if (!ofb->dss)
- 		OMAPFBXvScreenInit(pScreen);
- 
-+	pScreen->SaveScreen = OMAPFBSaveScreen;
-+	
+@@ -644,6 +645,8 @@
  	/* Initialize RANDR support */
  	xf86CrtcScreenInit(pScreen);
  
-@@ -712,6 +715,18 @@
++	pScreen->SaveScreen = OMAPFBSaveScreen;
++
+ 	return TRUE;
+ }
+ 
+@@ -715,6 +718,18 @@
  }
  
  static Bool
 +OMAPFBSaveScreen(ScreenPtr pScreen, int mode)
 +{
 +	Bool on = xf86IsUnblank(mode);
-+	
++
 +	if (mode == 0)
-+		system("echo 10 > /sys/class/leds/pwm1/brightness");
++		system("echo 1 > /sys/class/backlight/backlight/brightness");
 +	if (mode == 1)
-+		system("echo 255 > /sys/class/leds/pwm1/brightness");
++		system("echo 16 > /sys/class/backlight/backlight/brightness");
 +	return TRUE;
 +}
 +
