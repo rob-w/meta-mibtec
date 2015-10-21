@@ -33,6 +33,7 @@ SYSTEM_STUFF = "udev \
             initscripts \
             stat \
             omapconf \
+            cpuburn-neon \
             "
 
 XORG_STUFF = " xserver-xorg \
