@@ -1,0 +1,20 @@
+--- a/config.mk	2015-10-21 10:09:22.057892125 +0200
++++ b/config.mk-new	2015-10-21 12:03:29.578142059 +0200
+@@ -58,7 +58,7 @@
+ WITH_SYS_TREE:=yes
+ 
+ # Build with SRV lookup support.
+-WITH_SRV:=yes
++WITH_SRV:=no
+ 
+ # Build using libuuid for clientid generation (Linux only - please report if
+ # supported on your platform).
+@@ -241,7 +241,7 @@
+ endif
+ 
+ INSTALL?=install
+-prefix=/usr/local
++prefix=/usr
+ mandir=${prefix}/share/man
+ localedir=${prefix}/share/locale
+ STRIP?=strip
