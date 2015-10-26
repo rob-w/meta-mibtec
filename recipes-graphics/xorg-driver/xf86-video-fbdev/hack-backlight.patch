@@ -1,0 +1,68 @@
+--- a/src/fbdev.c	2015-10-26 08:29:06.419365533 +0100
++++ b/src/fbdev-new.c	2015-10-26 08:57:59.655288258 +0100
+@@ -39,6 +39,7 @@
+ #endif
+ 
+ static Bool debug = 0;
++static Bool dimm = 0;
+ 
+ #define TRACE_ENTER(str) \
+     do { if (debug) ErrorF("fbdev: " str " %d\n",pScrn->scrnIndex); } while (0)
+@@ -60,6 +61,7 @@
+ static Bool	FBDevPreInit(ScrnInfoPtr pScrn, int flags);
+ static Bool	FBDevScreenInit(SCREEN_INIT_ARGS_DECL);
+ static Bool	FBDevCloseScreen(CLOSE_SCREEN_ARGS_DECL);
++static Bool FBSaveScreen(ScreenPtr pScreen, int mode);
+ static void *	FBDevWindowLinear(ScreenPtr pScreen, CARD32 row, CARD32 offset, int mode,
+ 				  CARD32 *size, void *closure);
+ static void	FBDevPointerMoved(SCRN_ARG_TYPE arg, int x, int y);
+@@ -124,7 +126,8 @@
+ 	OPTION_SHADOW_FB,
+ 	OPTION_ROTATE,
+ 	OPTION_FBDEV,
+-	OPTION_DEBUG
++	OPTION_DEBUG,
++	OPTION_DIMM
+ } FBDevOpts;
+ 
+ static const OptionInfoRec FBDevOptions[] = {
+@@ -132,6 +135,7 @@
+ 	{ OPTION_ROTATE,	"Rotate",	OPTV_STRING,	{0},	FALSE },
+ 	{ OPTION_FBDEV,		"fbdev",	OPTV_STRING,	{0},	FALSE },
+ 	{ OPTION_DEBUG,		"debug",	OPTV_BOOLEAN,	{0},	FALSE },
++	{ OPTION_DIMM,		"dimm", 	OPTV_BOOLEAN,	{0},	FALSE },
+ 	{ -1,			NULL,		OPTV_NONE,	{0},	FALSE }
+ };
+ 
+@@ -889,7 +893,11 @@
+ 
+ 	xf86DPMSInit(pScreen, fbdevHWDPMSSetWeak(), 0);
+ 
+-	pScreen->SaveScreen = fbdevHWSaveScreenWeak();
++	if (xf86ReturnOptValBool(fPtr->Options, OPTION_DIMM, FALSE)) {
++		xf86DrvMsg(pScrn->scrnIndex, X_CONFIG, "backlight dimm option active\n");
++		pScreen->SaveScreen = FBSaveScreen;
++	} else
++		pScreen->SaveScreen = fbdevHWSaveScreenWeak();
+ 
+ 	/* Wrap the current CloseScreen function */
+ 	fPtr->CloseScreen = pScreen->CloseScreen;
+@@ -911,6 +919,18 @@
+ 	return TRUE;
+ }
+ 
++static Bool
++FBSaveScreen(ScreenPtr pScreen, int mode)
++{
++	Bool on = xf86IsUnblank(mode);
++
++	if (mode == 0)
++		system("echo 1 > /sys/class/backlight/backlight/brightness");
++	if (mode == 1)
++		system("echo 16 > /sys/class/backlight/backlight/brightness");
++	return TRUE;
++}
++
+ static Bool
+ FBDevCloseScreen(CLOSE_SCREEN_ARGS_DECL)
+ {
