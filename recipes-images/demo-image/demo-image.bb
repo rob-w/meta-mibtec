@@ -122,6 +122,7 @@ IMAGE_INSTALL += "mtd-utils \
             cronie \
             watchdog \
             strace \
+            valgrind \
             gdb \
             ncurses \
             bash \
