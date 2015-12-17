@@ -1,0 +1,11 @@
+--- a/tools/mtview-orig.c	2015-12-17 13:09:22.673201466 +0100
++++ b/tools/mtview.c	2015-12-17 13:10:00.641202852 +0100
+@@ -142,7 +142,7 @@
+ 	w->black = BlackPixel(w->dsp, w->screen);
+ 
+ 	w->win = XCreateSimpleWindow(w->dsp, XDefaultRootWindow(w->dsp),
+-				     0, 0, 200, 200, 0, w->black, w->white);
++				     0, 0, 1024, 600, 0, w->black, w->white);
+ 	w->gc = DefaultGC(w->dsp, w->screen);
+ 
+ 	XMapWindow(w->dsp, w->win);
