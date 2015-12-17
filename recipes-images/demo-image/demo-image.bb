@@ -59,6 +59,7 @@ XORG_STUFF = " xserver-xorg \
             xset \
             xmessage \
             psplash \
+            utouch-mtview \
             "
 
 UI_STUFF = " matchbox-wm \
