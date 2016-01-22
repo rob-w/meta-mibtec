@@ -1,6 +1,6 @@
 --- a/config.mk	2015-10-21 10:09:22.057892125 +0200
-+++ b/config.mk-new	2015-10-21 12:03:29.578142059 +0200
-@@ -58,7 +58,7 @@
++++ b/config.mk-new	2016-01-22 11:34:55.234665339 +0100
+@@ -58,14 +58,14 @@
  WITH_SYS_TREE:=yes
  
  # Build with SRV lookup support.
@@ -9,6 +9,14 @@
  
  # Build using libuuid for clientid generation (Linux only - please report if
  # supported on your platform).
+ WITH_UUID:=yes
+ 
+ # Build with websockets support on the broker.
+-WITH_WEBSOCKETS:=no
++WITH_WEBSOCKETS:=yes
+ 
+ # Use elliptic keys in broker
+ WITH_EC:=yes
 @@ -241,7 +241,7 @@
  endif
  
