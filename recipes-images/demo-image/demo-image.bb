@@ -80,20 +80,16 @@ ALSA_STUFF = "alsa-utils-amixer \
             alsa-utils-alsamixer \
             "
 
-3D_STUFF = "omap3-sgx-modules \
-            libgles-omap3 \
-            libgles-omap3-rawdemos \
+3D_STUFF = "omap5-sgx-ddk-um-linux \
+            omapdrm-pvr \
             fbset \
             "
 
-GST_STUFF = "gst-meta-base\
-            gstreamer \
-            gst-plugin-mad \
-            gst-plugin-audioconvert \
-            gst-plugin-audioresample \
-            gst-plugins-good \
-            gst-plugins-bad \
-            gst-plugins-ugly \
+GST_STUFF = " \
+            gstreamer1.0 \
+            gstreamer1.0-plugins-base \
+            gstreamer1.0-plugins-good \
+            gstreamer1.0-libav \
            "
 
 NETWORK_STUFF = "nfs-utils \
@@ -101,8 +97,11 @@ NETWORK_STUFF = "nfs-utils \
             wireless-tools \
             bluez4 \
             wpa-supplicant \
+            init-ifupdown \
+            openssh-sftp \
             ethtool \
             xinetd \
+            net-snmp-client \
             iproute2 \
             iperf \
             "
@@ -111,6 +110,8 @@ IMAGE_INSTALL += "mtd-utils \
             ${KERNEL_STUFF} \
             ${SYSTEM_STUFF} \
             ${XORG_STUFF} \
+            ${GST_STUFF} \
+            ${3D_STUFF} \
             ${ALSA_STUFF} \
             ${UI_STUFF} \
             ${NETWORK_STUFF} \
