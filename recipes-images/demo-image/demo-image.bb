@@ -22,7 +22,10 @@ KERNEL_STUFF = "kernel \
             kernel-module-industrialio \
             kernel-module-kfifo-buf \
             kernel-module-ti-am335x-adc \
+            kernel-module-ltc2499 \
+            kernel-module-mcp4725 \
             kernel-module-edt-ft5x06 \
+            kernel-module-sx8654 \
             module-init-tools-depmod \
             "
 
@@ -92,8 +95,7 @@ GST_STUFF = " \
             gstreamer1.0-libav \
            "
 
-NETWORK_STUFF = "nfs-utils \
-            nfs-utils-client \
+NETWORK_STUFF = "nfs-utils-client \
             wireless-tools \
             bluez4 \
             wpa-supplicant \
@@ -119,6 +121,7 @@ IMAGE_INSTALL += "mtd-utils \
             cpufrequtils \
             e2fsprogs \
             dosfstools \
+            i2c-tools \
             psplash-mis \
             lsof \
             cronie \
