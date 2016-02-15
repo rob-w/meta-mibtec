@@ -92,7 +92,6 @@ GST_STUFF = " \
             gstreamer1.0 \
             gstreamer1.0-plugins-base \
             gstreamer1.0-plugins-good \
-            gstreamer1.0-libav \
            "
 
 NETWORK_STUFF = "nfs-utils-client \
