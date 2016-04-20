@@ -41,16 +41,12 @@ SYSTEM_STUFF = "udev \
             "
 
 XORG_STUFF = " xserver-xorg \
-            xserver-xorg-extension-glx \
             xf86-video-omapfb \
             xf86-video-fbdev \
             xf86-input-evdev \
             xf86-input-tslib \
             xf86-input-keyboard \
             xf86-input-mouse \
-            xserver-xorg-extension-dri2 \
-            xserver-xorg-extension-dri2 \
-            xserver-xorg-extension-glx \
             xserver-xf86-config \
             xserver-startup \
             x11vnc \
