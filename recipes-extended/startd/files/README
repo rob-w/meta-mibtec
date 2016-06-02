@@ -1,0 +1,7 @@
+
+This contains a sample "startd" implementation
+startd is a deamon starter which takes a parameter a script which is to be parsed and run
+
+It takes Keywords "#BEGINLOOP" - "#ENDLOOP" and loops between those lines
+
+

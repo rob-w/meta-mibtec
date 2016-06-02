@@ -93,4 +93,6 @@ IMAGE_INSTALL += "mtd-utils \
             procps \
             tzdata \
             tzdata-europe \
+            startd \
+            startd-sample \
             "
