@@ -36,7 +36,6 @@ SYSTEM_STUFF = "udev \
             sysvinit \
             initscripts \
             stat \
-            omapconf \
             cpuburn-neon \
             "
 
@@ -80,7 +79,7 @@ ALSA_STUFF = "alsa-utils-amixer \
             alsa-utils-alsamixer \
             "
 
-3D_STUFF = "omap5-sgx-ddk-um-linux \
+3D_STUFF = "ti-sgx-ddk-um \
             omapdrm-pvr \
             fbset \
             "
@@ -93,7 +92,7 @@ GST_STUFF = " \
 
 NETWORK_STUFF = "nfs-utils-client \
             wireless-tools \
-            bluez4 \
+            bluez5 \
             wpa-supplicant \
             init-ifupdown \
             openssh-sftp \
@@ -109,7 +108,6 @@ IMAGE_INSTALL += "mtd-utils \
             ${SYSTEM_STUFF} \
             ${XORG_STUFF} \
             ${GST_STUFF} \
-            ${3D_STUFF} \
             ${ALSA_STUFF} \
             ${UI_STUFF} \
             ${NETWORK_STUFF} \
@@ -131,5 +129,5 @@ IMAGE_INSTALL += "mtd-utils \
             procps \
             tzdata \
             tzdata-europe \
-            midori \
+            epiphany \
             "
