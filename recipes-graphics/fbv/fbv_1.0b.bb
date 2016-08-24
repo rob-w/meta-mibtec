@@ -7,6 +7,7 @@ PR = "r2"
 SRC_URI = "http://s-tech.elsat.net.pl/fbv/fbv-1.0b.tar.gz \
 	file://cross_compile.patch \
 	file://fbv-1.0b.patch \
+	file://png.c.patch \
 	"
 
 do_configure() {
