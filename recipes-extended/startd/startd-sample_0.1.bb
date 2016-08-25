@@ -9,7 +9,6 @@ LIC_FILES_CHKSUM = "file://README;md5=8d4c77fe709bede159f0b3fe1b1be5e6"
 S = "${WORKDIR}"
 
 SRC_URI = "file://README \
-	file://tpanel.sh \
 	file://fstab-ro \
 	file://startd.sh \
 	file://preload.sh \
@@ -26,7 +25,6 @@ do_install () {
 	install -d ${D}${sysconfdir}/rc5.d
 
 	install -m 0755    ${WORKDIR}/startd.sh				${D}${sysconfdir}/init.d/
-	install -m 0755    ${WORKDIR}/tpanel.sh				${D}${sysconfdir}/init.d/
 	install -m 0755    ${WORKDIR}/preload.sh			${D}${sysconfdir}/init.d/
 	install -m 0755    ${WORKDIR}/my-app.sh				${D}${sysconfdir}/init.d/
 	install -m 0755    ${WORKDIR}/fixup.sh				${D}${sysconfdir}/init.d/

@@ -131,5 +131,6 @@ IMAGE_INSTALL += "mtd-utils \
             procps \
             tzdata \
             tzdata-europe \
+            tpanel-scripts \
             midori \
             "

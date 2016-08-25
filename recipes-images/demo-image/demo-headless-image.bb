@@ -94,5 +94,6 @@ IMAGE_INSTALL += "mtd-utils \
             tzdata \
             tzdata-europe \
             startd \
+            tpanel-scripts \
             startd-sample \
             "

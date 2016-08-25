@@ -13,7 +13,7 @@ case "$1" in
 		/etc/init.d/fixup.sh
 	fi
 
-	M=`/etc/init.d/tpanel.sh`
+	M=`tpanel.sh`
 
 	if [ "$M" -eq "3" ]
 	then
