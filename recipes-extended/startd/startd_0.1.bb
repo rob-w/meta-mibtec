@@ -3,7 +3,7 @@ HOMEPAGE = "http://www.mibtec.de"
 AUTHOR = "Robert Woerle"
 SECTION = "base"
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://Makefile;md5=ccd3062fe1687565d52706e88ee6f2f9"
+LIC_FILES_CHKSUM = "file://Makefile;md5=a5400d2f505d9fef015d48ff424e736c"
 PR = "r1"
 
 SRC_URI = "file://startd.c \

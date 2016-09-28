@@ -9,7 +9,7 @@ PR = "r0"
 
 COMPATIBLE_MACHINE = "igep0020|ti33x|omap-a15|omap4|am437x-evm"
 
-BRANCH ?= "master"
+BRANCH ?= "next"
 SRCREV = "4075c78d7611a41e0bd98797fba7223ff17af4fc"
 
 SRC_URI = "git://github.com/omapconf/omapconf.git;protocol=git;branch=${BRANCH}"
