@@ -40,41 +40,6 @@ SYSTEM_STUFF = "udev \
             cpuburn-neon \
             "
 
-XORG_STUFF = " xserver-xorg \
-            xf86-video-omapfb \
-            xf86-video-fbdev \
-            xf86-input-evdev \
-            xf86-input-tslib \
-            xf86-input-keyboard \
-            xf86-input-mouse \
-            xserver-xf86-config \
-            xserver-startup \
-            x11vnc \
-            xinput \
-            xhost \
-            xrdb \
-            xauth \
-            xinput-calibrator \
-            xdpyinfo \
-            xset \
-            xmessage \
-            psplash \
-            utouch-mtview \
-            "
-
-UI_STUFF = " matchbox-wm \
-            sato-icon-theme \
-            xcursor-transparent-theme \
-            rxvt-unicode \
-            hicolor-icon-theme \
-            gdk-pixbuf-loader-png \
-            gdk-pixbuf-loader-xpm \
-            gdk-pixbuf-loader-jpeg \
-            ttf-bitstream-vera\
-            gtk-engine-clearlooks \
-            gtk-theme-clearlooks \
-            "
-
 ALSA_STUFF = "alsa-utils-amixer \
             alsa-utils-aplay \
             alsa-utils-alsamixer \
@@ -107,11 +72,8 @@ NETWORK_STUFF = "nfs-utils-client \
 IMAGE_INSTALL += "mtd-utils \
             ${KERNEL_STUFF} \
             ${SYSTEM_STUFF} \
-            ${XORG_STUFF} \
-            ${GST_STUFF} \
             ${3D_STUFF} \
             ${ALSA_STUFF} \
-            ${UI_STUFF} \
             ${NETWORK_STUFF} \
             devmem2 \
             cpufrequtils \
@@ -131,6 +93,7 @@ IMAGE_INSTALL += "mtd-utils \
             procps \
             tzdata \
             tzdata-europe \
+            startd \
             tpanel-scripts \
-            midori \
+            startd-sample \
             "

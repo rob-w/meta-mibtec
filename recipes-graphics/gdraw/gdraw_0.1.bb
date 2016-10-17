@@ -5,7 +5,7 @@ MAINTAINER = "Robert Woerle <rwoerle@mibtec.de>"
 DEPENDS = "libgpewidget gtk+ glib-2.0"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
-SRCREV = "e6761bddcc296b0e5772683a2c2c5d5af86922a4"
+SRCREV = "ea759114e9796834bb2e45a43fa01cf1846b2c7a"
 
 S = "${WORKDIR}/git"
 
