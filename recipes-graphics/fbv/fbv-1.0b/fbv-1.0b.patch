@@ -6,7 +6,7 @@ diff -urN fbv-1.0b-0rig/Makefile fbv-1.0b/Makefile
  
  OUT	= fbv
 -#LIBS	= -lungif -L/usr/X11R6/lib -ljpeg -lpng
-+LIBS	= -L/usr/lib -ljpeg -lpng #-lungif
++LIBS	= -ljpeg -lpng
  
  all: $(OUT)
  	@echo Build DONE.

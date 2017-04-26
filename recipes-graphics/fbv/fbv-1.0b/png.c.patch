@@ -1,0 +1,40 @@
+--- a/png.c	2016-08-24 11:26:45.698445147 +0200
++++ b/png.c	2016-08-24 11:37:24.994416644 +0200
+@@ -69,12 +69,12 @@
+         fclose(fh); return(FH_ERROR_FORMAT);
+     }
+     rp=0;
+-    if (setjmp(png_ptr->jmpbuf))
+-    {
+-	png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+-        if(rp) free(rp);
+-	fclose(fh); return(FH_ERROR_FORMAT);
+-    }
++//    if (setjmp(png_ptr->jmpbuf))
++//    {
++//	png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
++//        if(rp) free(rp);
++//	fclose(fh); return(FH_ERROR_FORMAT);
++//    }
+ 
+     png_init_io(png_ptr,fh);
+ 
+@@ -161,12 +161,12 @@
+         fclose(fh); return(FH_ERROR_FORMAT);
+     }
+     rp=0;
+-    if (setjmp(png_ptr->jmpbuf))
+-    {
+-	png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+-        if(rp) free(rp);
+-	fclose(fh); return(FH_ERROR_FORMAT);
+-    }
++//    if (setjmp(png_ptr->jmpbuf))
++//    {
++//	png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
++//        if(rp) free(rp);
++//	fclose(fh); return(FH_ERROR_FORMAT);
++//    }
+    
+     png_init_io(png_ptr,fh);
+     png_read_info(png_ptr, info_ptr);
