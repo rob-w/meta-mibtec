@@ -8,7 +8,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 EXTRA_OECONF += "--enable-rdp-compositor"
 
-RDEPENDS_${PN} += "weston-conf"
+DEPENDS += "freerdp"
 
 SRC_URI += " \
 	file://0002-Weston1.9.0-Allow-visual_id-to-be-0.patch \
