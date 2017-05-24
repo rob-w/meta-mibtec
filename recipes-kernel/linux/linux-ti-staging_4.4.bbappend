@@ -6,7 +6,7 @@ KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb \
 			am437x-mismdis070a.dtb \
 			am437x-mispanel120b.dtb"
 
-SRCREV = "208d3724dff325bab91a998de829554fa48824f5"
+SRCREV = "972e61e7d4cf1bb30e75e57009bd432edb3080fc"
 PV = "4.4.41"
 BRANCH = "mis-4.4.y"
 
