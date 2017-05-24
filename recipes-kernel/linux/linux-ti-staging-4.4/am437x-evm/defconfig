@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.4.15 Kernel Configuration
+# Linux/arm 4.4.41 Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_ARM_HAS_SG_CHAIN=y
@@ -446,6 +446,15 @@ CONFIG_ARM_ERRATA_775420=y
 # CONFIG_PCI is not set
 # CONFIG_PCI_DOMAINS_GENERIC is not set
 # CONFIG_PCI_SYSCALL is not set
+
+#
+# PCI controller drivers
+#
+
+#
+# PCI Endpoint
+#
+# CONFIG_PCI_ENDPOINT is not set
 # CONFIG_PCCARD is not set
 
 #
@@ -2224,6 +2233,7 @@ CONFIG_MFD_OMAP_USB_HOST=y
 # CONFIG_MFD_TPS65086 is not set
 # CONFIG_MFD_TPS65090 is not set
 # CONFIG_MFD_TPS65217 is not set
+# CONFIG_MFD_TI_LP873X is not set
 CONFIG_MFD_TPS65218=y
 # CONFIG_MFD_TPS6586X is not set
 # CONFIG_MFD_TPS65910 is not set
@@ -2591,7 +2601,6 @@ CONFIG_DISPLAY_PANEL_DPI=y
 # CONFIG_DISPLAY_PANEL_TPO_TD028TTEC1 is not set
 # CONFIG_DISPLAY_PANEL_TPO_TD043MTEA1 is not set
 # CONFIG_DISPLAY_PANEL_NEC_NL8048HL11 is not set
-# CONFIG_DISPLAY_PANEL_TLC59108 is not set
 # CONFIG_DRM_TILCDC is not set
 # CONFIG_DRM_VIRTIO_GPU is not set
 # CONFIG_DRM_FSL_DCU is not set
@@ -3512,7 +3521,6 @@ CONFIG_MEMORY=y
 # CONFIG_TI_EMIF is not set
 CONFIG_OMAP_GPMC=y
 # CONFIG_OMAP_GPMC_DEBUG is not set
-# CONFIG_TI_EMIF_SRAM is not set
 CONFIG_IIO=y
 CONFIG_IIO_BUFFER=y
 CONFIG_IIO_BUFFER_CB=y
@@ -3719,6 +3727,7 @@ CONFIG_MCP4725=m
 # CONFIG_MS5637 is not set
 # CONFIG_IIO_ST_PRESS is not set
 # CONFIG_T5403 is not set
+CONFIG_AP4A=m
 
 #
 # Lightning sensors
@@ -4382,6 +4391,6 @@ CONFIG_FONT_8x16=y
 # CONFIG_FONT_SUN8x16 is not set
 # CONFIG_FONT_SUN12x22 is not set
 # CONFIG_FONT_10x18 is not set
-# CONFIG_SG_SPLIT is not set
+CONFIG_SG_SPLIT=y
 CONFIG_ARCH_HAS_SG_CHAIN=y
 CONFIG_VIRTUALIZATION=y
