@@ -18,4 +18,5 @@ SRC_URI += " \
 	file://0001-Add-soc-performance-monitor-utilites.patch \
 	file://0001-compositor-drm-support-RGB565-with-pixman-renderer.patch \
 	file://0001-compositor-drm-fix-hotplug-weston-termination-proble.patch \
+	file://0001-disable-WL_BUFFER-warning.patch \
 "
