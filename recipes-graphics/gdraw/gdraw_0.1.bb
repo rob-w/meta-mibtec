@@ -14,4 +14,3 @@ PV = "0.1"
 
 inherit autotools pkgconfig
 SRC_URI = "git://github.com/rob-w/gdraw.git;protocol=git"
-CFLAGS_append += " -DBUILDDATE=${DATE}"
