@@ -1,5 +1,5 @@
 DESCRIPTION = "Frame Buffer Viewer"
-LICENSE = "GPL"
+LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=130f9d9dddfebd2c6ff59165f066e41c"
 DEPENDS = "libpng jpeg"
 PR = "r2"
