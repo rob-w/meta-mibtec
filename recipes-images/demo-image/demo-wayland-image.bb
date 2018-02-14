@@ -1,8 +1,5 @@
 #
-# Copyright (C) 2007 OpenedHand Ltd.
-# base on core-image-minimal
-#
-DESCRIPTION = "Demo image for MIBTEC Boards"
+DESCRIPTION = "bdtronic image for MIBTEC Boards"
 
 IMAGE_INSTALL = "${ROOTFS_PKGMANAGE_BOOTSTRAP} ${CORE_IMAGE_EXTRA_INSTALL}"
 
@@ -25,8 +22,9 @@ KERNEL_STUFF = "kernel \
             kernel-module-mcp4725 \
             kernel-module-edt-ft5x06 \
             kernel-module-sx8651 \
-            kernel-module-spidev \
-            kernel-module-uio-pdrv-genirq \
+            kernel-module-ap4a \
+            kernel-module-ads1018 \ 
+            kernel-module-leds-tlc591xx \
             module-init-tools-depmod \
             "
 
@@ -38,45 +36,21 @@ SYSTEM_STUFF = "udev \
             stat \
             cpuburn-neon \
             "
-
-XORG_STUFF = " xserver-xorg \
-            xf86-video-omapfb \
-            xf86-video-fbdev \
-            xf86-input-evdev \
-            xf86-input-tslib \
-            xf86-input-keyboard \
-            xf86-input-mouse \
-            xserver-xf86-config \
-            xserver-startup \
-            x11vnc \
-            xinput \
-            xhost \
-            xrdb \
-            xauth \
-            xinput-calibrator \
-            xdpyinfo \
-            xset \
-            xmessage \
-            psplash \
-            utouch-mtview \
+WAYLAND = "weston \
+            weston-conf \
+            weston-examples \
+            librsvg \
+            librsvg-gtk \
             "
-
-UI_STUFF = " matchbox-wm \
-            sato-icon-theme \
-            xcursor-transparent-theme \
-            rxvt-unicode \
-            hicolor-icon-theme \
-            gdk-pixbuf-loader-png \
+GTK = "gdk-pixbuf-loader-png \
             gdk-pixbuf-loader-xpm \
             gdk-pixbuf-loader-jpeg \
-            ttf-bitstream-vera\
-            gtk-engine-clearlooks \
-            gtk-theme-clearlooks \
-            "
-
-ALSA_STUFF = "alsa-utils-amixer \
-            alsa-utils-aplay \
-            alsa-utils-alsamixer \
+            gdk-pixbuf-loader-gif \
+            gdk-pixbuf-loader-ani \
+            gdk-pixbuf-loader-bmp \
+            gdk-pixbuf-loader-ico \
+            gdk-pixbuf-loader-icns \
+            gdk-pixbuf-loader-bmp \
             "
 
 3D_STUFF = "ti-sgx-ddk-um \
@@ -84,16 +58,8 @@ ALSA_STUFF = "alsa-utils-amixer \
             fbset \
             "
 
-GST_STUFF = " \
-            gstreamer1.0 \
-            gstreamer1.0-plugins-base \
-            gstreamer1.0-plugins-good \
-           "
-
 NETWORK_STUFF = "nfs-utils-client \
             wireless-tools \
-            bluez5 \
-            wpa-supplicant \
             init-ifupdown \
             openssh-sftp \
             ethtool \
@@ -106,22 +72,19 @@ NETWORK_STUFF = "nfs-utils-client \
 IMAGE_INSTALL += "mtd-utils \
             ${KERNEL_STUFF} \
             ${SYSTEM_STUFF} \
-            ${XORG_STUFF} \
-            ${GST_STUFF} \
-            ${ALSA_STUFF} \
-            ${UI_STUFF} \
+            ${3D_STUFF} \
+            ${WAYLAND} \
+            ${GTK} \
             ${NETWORK_STUFF} \
             devmem2 \
             cpufrequtils \
             e2fsprogs \
             dosfstools \
             i2c-tools \
-            psplash-mis \
             lsof \
             cronie \
             watchdog \
             strace \
-            valgrind \
             gdb \
             ncurses \
             bash \
@@ -129,4 +92,10 @@ IMAGE_INSTALL += "mtd-utils \
             procps \
             tzdata \
             tzdata-europe \
+            mis-hardware-test \
+            perl \
+            perl-module-socket \
+            gnuplot \
+            startd \
+            psplash-mis \
             "
