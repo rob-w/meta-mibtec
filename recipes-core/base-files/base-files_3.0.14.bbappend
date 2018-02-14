@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "file://fstab"
-dirs755 = "/bin /boot /dev ${sysconfdir} ${sysconfdir}/default \
+dirs755 = "/bin /boot /dev /data ${sysconfdir} ${sysconfdir}/default \
            ${sysconfdir}/skel /lib /mnt /proc ${ROOT_HOME} /sbin \
            ${prefix} ${bindir} ${docdir} /usr/games ${includedir} \
            ${libdir} ${sbindir} ${datadir} \
