@@ -92,7 +92,6 @@ IMAGE_INSTALL += "mtd-utils \
             procps \
             tzdata \
             tzdata-europe \
-            mis-hardware-test \
             perl \
             perl-module-socket \
             gnuplot \
