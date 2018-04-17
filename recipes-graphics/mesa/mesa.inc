@@ -10,7 +10,7 @@ HOMEPAGE = "http://mesa3d.org"
 BUGTRACKER = "https://bugs.freedesktop.org"
 SECTION = "x11"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://docs/license.html;md5=6a23445982a7a972ac198e93cc1cb3de"
+LIC_FILES_CHKSUM = "file://docs/license.html;md5=899fbe7e42d494c7c8c159c7001693d5"
 
 PE = "2"
 
@@ -24,7 +24,7 @@ REQUIRED_DISTRO_FEATURES = "opengl"
 
 EXTRA_OECONF = "--enable-shared-glapi"
 
-PACKAGECONFIG ??= "gbm egl gles dri ${MESA_CRYPTO} \
+PACKAGECONFIG ??= "egl gles dri ${MESA_CRYPTO} \
 		${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11', '', d)}\
 		${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)}\
 		"
@@ -78,6 +78,9 @@ EXCLUDE_FROM_WORLD = "1"
 
 # Remove the mesa dependency on mesa-dev, as mesa is empty
 RDEPENDS_${PN}-dev = ""
+
+# Add dependency so that GLES3 header don't need to be added manually
+RDEPENDS_libgles2-mesa-dev += "libgles3-mesa-dev"
 
 PACKAGES =+ "libegl-mesa libegl-mesa-dev \
              libosmesa libosmesa-dev \
@@ -141,16 +144,17 @@ python mesa_populate_packages() {
         d.setVar("RREPLACES_%s" % pkg, pkg.replace("mesa", "mesa-dri", 1))
 
     import re
-    dri_drivers_root = os.path.join(d.getVar('libdir', True), "dri")
-    dri_pkgs = os.listdir(d.getVar('PKGD', True) + dri_drivers_root)
-    lib_name = d.expand("${MLPREFIX}mesa-megadriver")
-    for p in dri_pkgs:
-        m = re.match('^(.*)_dri\.so$', p)
-        if m:
-            pkg_name = " ${MLPREFIX}mesa-driver-%s" % legitimize_package_name(m.group(1))
-            d.appendVar("RPROVIDES_%s" % lib_name, pkg_name)
-            d.appendVar("RCONFLICTS_%s" % lib_name, pkg_name)
-            d.appendVar("RREPLACES_%s" % lib_name, pkg_name)
+    dri_drivers_root = oe.path.join(d.getVar('PKGD', True), d.getVar('libdir', True), "dri")
+    if os.path.isdir(dri_drivers_root):
+        dri_pkgs = os.listdir(dri_drivers_root)
+        lib_name = d.expand("${MLPREFIX}mesa-megadriver")
+        for p in dri_pkgs:
+            m = re.match('^(.*)_dri\.so$', p)
+            if m:
+                pkg_name = " ${MLPREFIX}mesa-driver-%s" % legitimize_package_name(m.group(1))
+                d.appendVar("RPROVIDES_%s" % lib_name, pkg_name)
+                d.appendVar("RCONFLICTS_%s" % lib_name, pkg_name)
+                d.appendVar("RREPLACES_%s" % lib_name, pkg_name)
 
     pipe_drivers_root = os.path.join(d.getVar('libdir', True), "gallium-pipe")
     do_split_packages(d, pipe_drivers_root, '^pipe_(.*)\.so$', 'mesa-driver-pipe-%s', 'Mesa %s pipe driver', extra_depends='')
@@ -163,6 +167,7 @@ PACKAGES_DYNAMIC += "^mesa-driver-.*"
 FILES_${PN} += "${sysconfdir}/drirc"
 FILES_mesa-megadriver = "${libdir}/dri/*"
 FILES_libegl-mesa = "${libdir}/libEGL.so.*"
+FILES_libgbm = "${libdir}/libgbm.so.*"
 FILES_libgles1-mesa = "${libdir}/libGLESv1*.so.*"
 FILES_libgles2-mesa = "${libdir}/libGLESv2.so.*"
 FILES_libgl-mesa = "${libdir}/libGL.so.*"
@@ -174,6 +179,7 @@ FILES_libxatracker = "${libdir}/libxatracker.so.*"
 
 FILES_${PN}-dev = "${libdir}/pkgconfig/dri.pc"
 FILES_libegl-mesa-dev = "${libdir}/libEGL.* ${includedir}/EGL ${includedir}/KHR ${libdir}/pkgconfig/egl.pc"
+FILES_libgbm-dev = "${libdir}/libgbm.* ${libdir}/pkgconfig/gbm.pc ${includedir}/gbm.h"
 FILES_libgl-mesa-dev = "${libdir}/libGL.* ${includedir}/GL ${libdir}/pkgconfig/gl.pc"
 FILES_libglapi-dev = "${libdir}/libglapi.*"
 FILES_libgles1-mesa-dev = "${libdir}/libGLESv1*.* ${includedir}/GLES ${libdir}/pkgconfig/glesv1*.pc"
