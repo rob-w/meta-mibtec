@@ -1,0 +1,23 @@
+diff --git a/clients/image.c b/clients/image.c
+index 4126305..2814b95 100644
+--- a/clients/image.c
++++ b/clients/image.c
+@@ -387,6 +387,9 @@ image_create(struct display *display, const char *filename,
+ 	*image_counter += 1;
+ 	image->initialized = false;
+ 
++	image->fullscreen = 1;
++	window_set_fullscreen(image->window, image->fullscreen);
++
+ 	window_set_user_data(image->window, image);
+ 	widget_set_redraw_handler(image->widget, redraw_handler);
+ 	widget_set_resize_handler(image->widget, resize_handler);
+@@ -400,7 +403,7 @@ image_create(struct display *display, const char *filename,
+ 	widget_set_button_handler(image->widget, button_handler);
+ 	widget_set_axis_handler(image->widget, axis_handler);
+ 	window_set_key_handler(image->window, key_handler);
+-	widget_schedule_resize(image->widget, 500, 400);
++	widget_schedule_resize(image->widget, 1024, 600);
+ 
+ 	return image;
+ }
