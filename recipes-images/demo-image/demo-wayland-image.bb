@@ -21,9 +21,8 @@ KERNEL_STUFF = "kernel \
             kernel-module-ltc2499 \
             kernel-module-mcp4725 \
             kernel-module-edt-ft5x06 \
-            kernel-module-sx8651 \
             kernel-module-ap4a \
-            kernel-module-ads1018 \ 
+            kernel-module-ti-ads1018 \ 
             kernel-module-leds-tlc591xx \
             module-init-tools-depmod \
             "
