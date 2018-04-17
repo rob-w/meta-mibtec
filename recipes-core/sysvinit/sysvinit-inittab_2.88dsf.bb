@@ -18,16 +18,6 @@ do_install() {
     install -d ${D}${sysconfdir}
     install -m 0644 ${WORKDIR}/inittab ${D}${sysconfdir}/inittab
 
-    idx=0
-    tmp="${SERIAL_CONSOLES}"
-    for i in $tmp
-    do
-	j=`echo ${i} | sed s/\;/\ /g`
-	echo "S:12345:respawn:${base_sbindir}/getty ${j}" >> ${D}${sysconfdir}/inittab
-
-	idx=`expr $idx + 1`
-    done
-
     if [ "${USE_VT}" = "1" ]; then
         cat <<EOF >>${D}${sysconfdir}/inittab
 # ${base_sbindir}/getty invocations for the runlevels.
@@ -49,27 +39,6 @@ EOF
     fi
 }
 
-pkg_postinst_${PN} () {
-# run this on the target
-if [ "x$D" = "x" ]; then
-	tmp="${SERIAL_CONSOLES_CHECK}"
-	for i in $tmp
-	do
-		j=`echo ${i} | sed s/^.*\;//g`
-		if [ -z "`cat /proc/consoles | grep ${j}`" ]; then
-			sed -i /^.*${j}$/d /etc/inittab
-		fi
-	done
-	kill -HUP 1
-else
-	if [ "${SERIAL_CONSOLES_CHECK}" = "" ]; then
-		exit 0
-	else
-		exit 1
-	fi
-fi
-}
-
 # USE_VT and SERIAL_CONSOLE are generally defined by the MACHINE .conf.
 # Set PACKAGE_ARCH appropriately.
 PACKAGE_ARCH = "${MACHINE_ARCH}"
@@ -79,6 +48,3 @@ CONFFILES_${PN} = "${sysconfdir}/inittab"
 
 USE_VT ?= "1"
 SYSVINIT_ENABLED_GETTYS ?= "1"
-
-
-
