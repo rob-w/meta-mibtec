@@ -2,13 +2,9 @@
 PACKAGECONFIG[fbdev] = "--enable-fbdev-compositor WESTON_NATIVE_BACKEND="fbdev-backend.so",--disable-fbdev-compositor,udev mtdev"
 PACKAGECONFIG[kms] = "--enable-drm-compositor,--disable-drm-compositor,drm udev libgbm mtdev"
 
-PR_append = ".mibtec4"
+PR_append = ".mibtec5"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-EXTRA_OECONF += "--enable-rdp-compositor"
-
-DEPENDS += "freerdp"
 
 SRC_URI += " \
 	file://0002-Weston1.9.0-Allow-visual_id-to-be-0.patch \
