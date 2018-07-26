@@ -62,6 +62,7 @@ NETWORK_STUFF = "nfs-utils-client \
             wireless-tools \
             init-ifupdown \
             openssh-sftp \
+            openssh-sftp-server \
             ethtool \
             xinetd \
             net-snmp-client \

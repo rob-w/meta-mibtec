@@ -96,6 +96,7 @@ NETWORK_STUFF = "nfs-utils-client \
             wpa-supplicant \
             init-ifupdown \
             openssh-sftp \
+            openssh-sftp-server \
             ethtool \
             xinetd \
             net-snmp-client \
