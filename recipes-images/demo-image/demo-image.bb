@@ -4,7 +4,7 @@
 #
 DESCRIPTION = "Demo image for MIBTEC Boards"
 
-IMAGE_INSTALL = "${ROOTFS_PKGMANAGE_BOOTSTRAP} ${CORE_IMAGE_EXTRA_INSTALL}"
+IMAGE_INSTALL = "${CORE_IMAGE_EXTRA_INSTALL}"
 
 IMAGE_LINGUAS = " "
 
@@ -62,16 +62,12 @@ XORG_STUFF = " xserver-xorg \
             "
 
 UI_STUFF = " matchbox-wm \
-            sato-icon-theme \
             xcursor-transparent-theme \
             rxvt-unicode \
             hicolor-icon-theme \
             gdk-pixbuf-loader-png \
             gdk-pixbuf-loader-xpm \
             gdk-pixbuf-loader-jpeg \
-            ttf-bitstream-vera\
-            gtk-engine-clearlooks \
-            gtk-theme-clearlooks \
             "
 
 ALSA_STUFF = "alsa-utils-amixer \
@@ -100,7 +96,7 @@ NETWORK_STUFF = "nfs-utils-client \
             xinetd \
             net-snmp-client \
             iproute2 \
-            iperf \
+            iperf3 \
             "
 
 IMAGE_INSTALL += "mtd-utils \
