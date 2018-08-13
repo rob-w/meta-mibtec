@@ -1,9 +1,9 @@
 #
 DESCRIPTION = "Demo image for MIBTEC Boards"
 
-IMAGE_INSTALL = "${ROOTFS_PKGMANAGE_BOOTSTRAP} ${CORE_IMAGE_EXTRA_INSTALL}"
+IMAGE_INSTALL = "${CORE_IMAGE_EXTRA_INSTALL}"
 
-IMAGE_LINGUAS = " "
+IMAGE_LINGUAS = "de-de en-us"
 
 LICENSE = "MIT"
 
@@ -12,6 +12,7 @@ IMAGE_FEATURES += "package-management ssh-server-openssh"
 inherit core-image
 
 KERNEL_STUFF = "kernel \
+            cryptodev-module \
             kernel-devicetree \
             kernel-module-dwc3 \
             kernel-module-dwc3-omap \
@@ -65,7 +66,7 @@ NETWORK_STUFF = "nfs-utils-client \
             xinetd \
             net-snmp-client \
             iproute2 \
-            iperf \
+            iperf3 \
             "
 
 IMAGE_INSTALL += "mtd-utils \
