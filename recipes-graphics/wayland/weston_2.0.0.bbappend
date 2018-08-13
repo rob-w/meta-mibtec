@@ -5,7 +5,3 @@ PACKAGECONFIG[kms] = "--enable-drm-compositor,--disable-drm-compositor,drm udev 
 PR_append = ".mibtec2"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-SRC_URI += " \
-	file://0001-Add-soc-performance-monitor-utilites.patch \
-"
