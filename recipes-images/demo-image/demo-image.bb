@@ -1,16 +1,11 @@
 #
-# Copyright (C) 2007 OpenedHand Ltd.
-# base on core-image-minimal
-#
 DESCRIPTION = "Demo image for MIBTEC Boards"
 
 IMAGE_INSTALL = "${CORE_IMAGE_EXTRA_INSTALL}"
-
 IMAGE_LINGUAS = " "
+IMAGE_FEATURES += "package-management ssh-server-openssh"
 
 LICENSE = "MIT"
-
-IMAGE_FEATURES += "package-management ssh-server-openssh"
 
 inherit core-image
 
@@ -24,6 +19,7 @@ KERNEL_STUFF = "kernel \
             kernel-module-ltc2499 \
             kernel-module-mcp4725 \
             kernel-module-edt-ft5x06 \
+            kernel-module-cryptodev \
             kernel-module-sx8651 \
             kernel-module-spidev \
             kernel-module-uio-pdrv-genirq \
@@ -37,6 +33,8 @@ SYSTEM_STUFF = "udev \
             initscripts \
             stat \
             cpuburn-neon \
+            openssl-engines \
+            openssl \
             "
 
 XORG_STUFF = " xserver-xorg \
