@@ -18,7 +18,7 @@ si::sysinit:/etc/init.d/rcS
 # Runlevel 1 is single-user.
 # Runlevels 2-5 are multi-user.
 # Runlevel 6 is reboot.
-
+0:12345:respawn:/sbin/getty 115200 ttyO0
 l0:0:wait:/etc/init.d/rc 0
 l1:1:wait:/etc/init.d/rc 1
 l2:2:wait:/etc/init.d/rc 2
