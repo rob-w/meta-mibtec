@@ -17,7 +17,7 @@ index 4126305..2814b95 100644
  	widget_set_axis_handler(image->widget, axis_handler);
  	window_set_key_handler(image->window, key_handler);
 -	widget_schedule_resize(image->widget, 500, 400);
-+	widget_schedule_resize(image->widget, 1024, 600);
++	window_set_fullscreen(image->window, image->fullscreen);
  
  	return image;
  }
