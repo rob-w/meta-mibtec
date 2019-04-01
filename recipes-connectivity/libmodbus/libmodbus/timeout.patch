@@ -1,0 +1,24 @@
+--- old/src/modbus.c	2013-10-06 11:40:04.055057556 +0200
++++ new/src/modbus-new.c	2014-12-16 10:58:23.012847182 +0100
+@@ -372,15 +372,15 @@
+     step = _STEP_FUNCTION;
+     length_to_read = ctx->backend->header_length + 1;
+ 
+-    if (msg_type == MSG_INDICATION) {
+-        /* Wait for a message, we don't know when the message will be
+-         * received */
+-        p_tv = NULL;
+-    } else {
++//    if (msg_type == MSG_INDICATION) {
++//        /* Wait for a message, we don't know when the message will be
++//         * received */
++//        p_tv = NULL;
++//    } else {
+         tv.tv_sec = ctx->response_timeout.tv_sec;
+         tv.tv_usec = ctx->response_timeout.tv_usec;
+         p_tv = &tv;
+-    }
++//    }
+ 
+     while (length_to_read != 0) {
+         rc = ctx->backend->select(ctx, &rset, p_tv, length_to_read);
