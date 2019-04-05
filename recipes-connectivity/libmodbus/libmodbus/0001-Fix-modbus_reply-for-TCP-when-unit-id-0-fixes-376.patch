@@ -1,0 +1,82 @@
+From b1adc3717fbf1cf4e3a9117ad57fcfb035809159 Mon Sep 17 00:00:00 2001
+From: Michael Heimpold <mhei@heimpold.de>
+Date: Fri, 7 Apr 2017 08:15:07 +0200
+Subject: [PATCH] Fix modbus_reply for TCP when unit id == 0 (fixes #376)
+
+According to the Modbus standard, the unit identifier is choosen by the
+TCP client and can be any value:
+
+"This field is used for intra-system routing purpose.  It is typically
+used to communicate to a MODBUS+ or a MODBUS serial line slave through a
+gateway between an Ethernet TCP-IP network and a MODBUS serial line.
+This field is set by the MODBUS Client in the request and must be returned
+with the same value in the response by the server."
+
+So the current check in modbus_reply must be extended to check whether
+we are in a RTU or TCP context.
+
+Also the unit-test has to be adjusted.
+
+Signed-off-by: Michael Heimpold <mhei@heimpold.de>
+---
+ src/modbus.c             |  3 ++-
+ tests/unit-test-client.c | 23 ++++++++++++++++-------
+ 2 files changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/src/modbus.c b/src/modbus.c
+index 681cda3..e59b424 100644
+--- a/src/modbus.c
++++ b/src/modbus.c
+@@ -996,7 +996,8 @@ int modbus_reply(modbus_t *ctx, const uint8_t *req,
+     }
+ 
+     /* Suppress any responses when the request was a broadcast */
+-    return (slave == MODBUS_BROADCAST_ADDRESS) ? 0 : send_msg(ctx, rsp, rsp_length);
++    return (ctx->backend->backend_type == _MODBUS_BACKEND_TYPE_RTU &&
++            slave == MODBUS_BROADCAST_ADDRESS) ? 0 : send_msg(ctx, rsp, rsp_length);
+ }
+ 
+ int modbus_reply_exception(modbus_t *ctx, const uint8_t *req,
+diff --git a/tests/unit-test-client.c b/tests/unit-test-client.c
+index debd2bc..d0b243d 100644
+--- a/tests/unit-test-client.c
++++ b/tests/unit-test-client.c
+@@ -488,19 +488,28 @@ int main(int argc, char *argv[])
+         printf("1-C/3 No response from slave %d with invalid request: ",
+                INVALID_SERVER_ID);
+         ASSERT_TRUE(rc == -1 && errno == ETIMEDOUT, "");
++
++
++        rc = modbus_set_slave(ctx, MODBUS_BROADCAST_ADDRESS);
++        ASSERT_TRUE(rc != -1, "Invalid broacast address");
++
++        rc = modbus_read_registers(ctx, UT_REGISTERS_ADDRESS,
++                                   UT_REGISTERS_NB, tab_rp_registers);
++        printf("2/3 No reply after a broadcast query: ");
++        ASSERT_TRUE(rc == -1 && errno == ETIMEDOUT, "");
+     } else {
+         /* Response in TCP mode */
+         printf("1/3 Response from slave %d: ", INVALID_SERVER_ID);
+         ASSERT_TRUE(rc == UT_REGISTERS_NB, "");
+-    }
+ 
+-    rc = modbus_set_slave(ctx, MODBUS_BROADCAST_ADDRESS);
+-    ASSERT_TRUE(rc != -1, "Invalid broacast address");
++        rc = modbus_set_slave(ctx, MODBUS_BROADCAST_ADDRESS);
++        ASSERT_TRUE(rc != -1, "Invalid broacast address");
+ 
+-    rc = modbus_read_registers(ctx, UT_REGISTERS_ADDRESS,
+-                               UT_REGISTERS_NB, tab_rp_registers);
+-    printf("2/3 No reply after a broadcast query: ");
+-    ASSERT_TRUE(rc == -1 && errno == ETIMEDOUT, "");
++        rc = modbus_read_registers(ctx, UT_REGISTERS_ADDRESS,
++                                   UT_REGISTERS_NB, tab_rp_registers);
++        printf("2/3 Reply after a query with unit id == 0: ");
++        ASSERT_TRUE(rc == UT_REGISTERS_NB, "");
++    }
+ 
+     /* Restore slave */
+     modbus_set_slave(ctx, old_slave);
+-- 
+2.7.4
+
