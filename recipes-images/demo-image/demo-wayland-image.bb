@@ -33,7 +33,6 @@ SYSTEM_STUFF = "udev \
             busybox \
             sysvinit \
             initscripts \
-            stat \
             cpuburn-neon \
             "
 WAYLAND = "weston \
@@ -54,12 +53,10 @@ GTK = "gdk-pixbuf-loader-png \
             "
 
 3D_STUFF = "ti-sgx-ddk-um \
-            omapdrm-pvr \
             fbset \
             "
 
 NETWORK_STUFF = "nfs-utils-client \
-            wireless-tools \
             init-ifupdown \
             openssh-sftp \
             ethtool \
