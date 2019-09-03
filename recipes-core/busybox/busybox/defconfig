@@ -68,7 +68,7 @@ CONFIG_CROSS_COMPILER_PREFIX="arm-poky-linux-gnueabi-"
 CONFIG_SYSROOT=""
 CONFIG_EXTRA_CFLAGS=" -O2 -pipe -g -feliminate-unused-debug-types"
 CONFIG_EXTRA_LDFLAGS=""
-CONFIG_EXTRA_LDLIBS=""
+CONFIG_EXTRA_LDLIBS="tirpc"
 
 #
 # Debugging Options
