@@ -1,6 +1,14 @@
---- a/src/fbdev-orig.c	2019-09-03 16:06:26.281167077 +0200
-+++ b/src/fbdev.c	2019-09-03 16:08:56.893215757 +0200
-@@ -125,7 +125,8 @@
+--- a/src/fbdev.c-orig	2019-09-03 16:45:13.747532818 +0200
++++ b/src/fbdev.c	2019-09-03 16:49:07.178254682 +0200
+@@ -66,6 +66,7 @@
+ #endif
+ static Bool	FBDevPreInit(ScrnInfoPtr pScrn, int flags);
+ static Bool	FBDevScreenInit(SCREEN_INIT_ARGS_DECL);
++static Bool FBSaveScreen(ScreenPtr pScreen, int mode);
+ static Bool	FBDevCloseScreen(CLOSE_SCREEN_ARGS_DECL);
+ static void *	FBDevWindowLinear(ScreenPtr pScreen, CARD32 row, CARD32 offset, int mode,
+ 				  CARD32 *size, void *closure);
+@@ -125,7 +126,8 @@
  	OPTION_SHADOW_FB,
  	OPTION_ROTATE,
  	OPTION_FBDEV,
@@ -10,7 +18,7 @@
  } FBDevOpts;
  
  static const OptionInfoRec FBDevOptions[] = {
-@@ -133,6 +134,7 @@
+@@ -133,6 +135,7 @@
  	{ OPTION_ROTATE,	"Rotate",	OPTV_STRING,	{0},	FALSE },
  	{ OPTION_FBDEV,		"fbdev",	OPTV_STRING,	{0},	FALSE },
  	{ OPTION_DEBUG,		"debug",	OPTV_BOOLEAN,	{0},	FALSE },
@@ -18,20 +26,22 @@
  	{ -1,			NULL,		OPTV_NONE,	{0},	FALSE }
  };
  
-@@ -1004,7 +1006,11 @@
+@@ -1004,8 +1007,12 @@
  
  	xf86DPMSInit(pScreen, fbdevDPMSSet, 0);
  
 -	pScreen->SaveScreen = fbdevSaveScreen;
+-
 +	if (xf86ReturnOptValBool(fPtr->Options, OPTION_DIMM, FALSE)) {
 +		xf86DrvMsg(pScrn->scrnIndex, X_CONFIG, "backlight dimm option active\n");
 +		pScreen->SaveScreen = FBSaveScreen;
 +	} else
-+		pScreen->SaveScreen = fbdevHWSaveScreenWeak();
- 
++		pScreen->SaveScreen = fbdevSaveScreen;
++		
  	/* Wrap the current CloseScreen function */
  	fPtr->CloseScreen = pScreen->CloseScreen;
-@@ -1026,6 +1032,18 @@
+ 	pScreen->CloseScreen = FBDevCloseScreen;
+@@ -1026,6 +1033,18 @@
  	return TRUE;
  }
  
