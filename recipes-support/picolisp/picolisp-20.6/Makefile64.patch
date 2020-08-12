@@ -1,0 +1,30 @@
+--- a/src64/Makefile	2017-10-31 17:01:54.000000000 +0100
++++ b/src64/Makefile	2020-02-27 13:18:22.902296926 +0100
+@@ -149,26 +149,18 @@
+ ### Link ###
+ $(bin)/picolisp: $(ARCH)$(SYS).base.o
+ 	$(CC) -o $(bin)/picolisp $(ARCH)$(SYS).base.o $(LD-MAIN) $(PIE)
+-	$(STRIP) $(bin)/picolisp
+ 
+ $(lib)/ext: $(ARCH)$(SYS).ext.o
+ 	$(CC) -o $(lib)/ext $(ARCH)$(SYS).ext.o $(LD-SHARED)
+-	$(STRIP) $(lib)/ext
+ 
+ $(lib)/ht: $(ARCH)$(SYS).ht.o
+ 	$(CC) -o $(lib)/ht $(ARCH)$(SYS).ht.o $(LD-SHARED)
+-	$(STRIP) $(lib)/ht
+ 
+ ### Assemble ###
+ .s.o:
+ 	$(AS) -o $*.o $*.s
+ 
+-### Compile ###
+-sysdefs: sysdefs.c
+-	$(CC) -o sysdefs -D_FILE_OFFSET_BITS=64 sysdefs.c
+-	$(STRIP) sysdefs
+-
+-emu.base.o: sysdefs emu.base.c
++emu.base.o: emu.base.c
+ 	$(CC) -c -O -fomit-frame-pointer -D_FILE_OFFSET_BITS=64 emu.base.c
+ 
+ .c.o:
