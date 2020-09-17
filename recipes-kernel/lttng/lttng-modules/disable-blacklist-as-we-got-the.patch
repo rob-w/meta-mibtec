@@ -1,0 +1,12 @@
+--- a/blacklist/kprobes.h	2020-09-17 11:55:50.786987932 +0200
++++ b/blacklist/kprobes.h	2020-09-17 11:56:09.103015907 +0200
+@@ -13,8 +13,7 @@
+ #include <lttng-kernel-version.h>
+ 
+ #if LTTNG_KERNEL_RANGE(4,20,0, 4,20,13) \
+-	|| LTTNG_KERNEL_RANGE(4,19,9, 4,19,26) \
+-	|| LTTNG_KERNEL_RANGE(4,14,87, 4,14,104)
++	|| LTTNG_KERNEL_RANGE(4,19,9, 4,19,26)
+ # if defined(CONFIG_ARM) && defined(CONFIG_OPTPROBES)
+ #  error "Your kernel is known to have buggy optimized kprobes implementation. Fixed by commit 0ac569bf6a7983c0c5747d6df8db9dc05bc92b6c \"ARM: 8834/1: Fix: kprobes: optimized kprobes illegal instruction\" in Linux. Disable CONFIG_OPTPROBES or upgrade your kernel."
+ # endif /* #if defined(CONFIG_ARM) && defined(CONFIG_OPTPROBES) */
