@@ -1,0 +1,107 @@
+From b8f94f1081dede724c7b21c1f7734a59fff47a86 Mon Sep 17 00:00:00 2001
+From: Robert Woerle <robert@linuxdevelopment.de>
+Date: Tue, 26 May 2020 08:32:21 +0000
+Subject: [PATCH] pru
+
+Signed-off-by: Robert Woerle <robert@linuxdevelopment.de>
+---
+ instrumentation/events/lttng-module/pru.h | 43 +++++++++++++++++++++++
+ probes/Kbuild                             |  1 +
+ probes/lttng-probe-pru.c                  | 23 ++++++++++++
+ 3 files changed, 67 insertions(+)
+ create mode 100644 instrumentation/events/lttng-module/pru.h
+ create mode 100644 probes/lttng-probe-pru.c
+
+diff --git a/instrumentation/events/lttng-module/pru.h b/instrumentation/events/lttng-module/pru.h
+new file mode 100644
+index 0000000..8c3dcd4
+--- /dev/null
++++ b/instrumentation/events/lttng-module/pru.h
+@@ -0,0 +1,43 @@
++#undef TRACE_SYSTEM
++#define TRACE_SYSTEM pru
++
++#if !defined(_TRACE_PRU_H) || defined(TRACE_HEADER_MULTI_READ)
++#define _TRACE_PRU_H
++
++#include "../../../probes/lttng-tracepoint-event.h"
++#include <linux/tracepoint.h>
++
++LTTNG_TRACEPOINT_EVENT(
++    /* format identical to mainline version for those */
++    pru_call,
++    TP_PROTO(int foo, const char* bar),
++    TP_ARGS(foo, bar),
++
++    /* possible differences */
++    TP_STRUCT__entry(
++        __field(int, my_int)
++        __field(char, char0)
++        __field(char, char1)
++        __string(product, bar)
++    ),
++
++    /* notice the use of tp_assign()/tp_strcpy() and no semicolons */
++    TP_fast_assign(
++        tp_assign(my_int, foo)
++        tp_assign(char0, bar[0])
++        tp_assign(char1, bar[1])
++        tp_strcpy(product, bar)
++    ),
++
++    /* This one is actually not used by LTTng either, but must be
++     * present for the moment.
++     */
++    TP_printk("", 0)
++
++/* no semicolon after this either */
++)
++
++#endif
++
++/* other difference: do NOT include <trace/define_trace.h> */
++#include "../../../probes/define_trace.h"
+diff --git a/probes/Kbuild b/probes/Kbuild
+index 0b1e016..dd31af1 100644
+--- a/probes/Kbuild
++++ b/probes/Kbuild
+@@ -13,6 +13,7 @@ obj-$(CONFIG_LTTNG) += lttng-probe-kmem.o
+ obj-$(CONFIG_LTTNG) += lttng-probe-module.o
+ obj-$(CONFIG_LTTNG) += lttng-probe-power.o
+ obj-$(CONFIG_LTTNG) += lttng-probe-statedump.o
++obj-$(CONFIG_LTTNG) += lttng-probe-pru.o
+ 
+ ifneq ($(CONFIG_NET_9P),)
+   obj-$(CONFIG_LTTNG) +=  $(shell \
+diff --git a/probes/lttng-probe-pru.c b/probes/lttng-probe-pru.c
+new file mode 100644
+index 0000000..797a8cb
+--- /dev/null
++++ b/probes/lttng-probe-pru.c
+@@ -0,0 +1,23 @@
++#include <linux/module.h>
++#include "../lttng-tracer.h"
++
++/* Build time verification of mismatch between mainline TRACE_EVENT()
++ * arguments and LTTng adaptation layer LTTNG_TRACEPOINT_EVENT() arguments.
++ */
++#include <trace/events/pru.h>
++
++/* create LTTng tracepoint probes */
++#define LTTNG_PACKAGE_BUILD
++#define CREATE_TRACE_POINTS
++#define TRACE_INCLUDE_PATH ../instrumentation/events/lttng-module
++
++#include "../instrumentation/events/lttng-module/pru.h"
++
++MODULE_LICENSE("GPL and additional rights");
++MODULE_AUTHOR("Your name <your-email>");
++MODULE_DESCRIPTION("LTTng pru probes");
++MODULE_VERSION(__stringify(LTTNG_MODULES_MAJOR_VERSION) "."
++    __stringify(LTTNG_MODULES_MINOR_VERSION) "."
++    __stringify(LTTNG_MODULES_PATCHLEVEL_VERSION)
++    LTTNG_MODULES_EXTRAVERSION);
++
+-- 
+2.17.1
+
