@@ -12,10 +12,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=cb2b3bad6d806284b0ff73fe8b554b2e"
 SRC_URI[md5sum] = "ef80b8f065f29cbcfa784dd36fe68822"
 SRC_URI[sha256sum] = "8297b99669baaf6253dd92adee512cefdf043ab8af6940f6341006bb50eaa150"
 SRC_URI = "http://software-lab.de/picoLisp-${PV}.tgz \
-			file://sysdefs.l \
 			file://Makefile.patch \
-			file://Makefile64.patch \
-			file://emu.defs.l.patch "
+			file://Makefile64.patch "
 
 inherit autotools pkgconfig
 S = "${WORKDIR}/picoLisp"
