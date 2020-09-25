@@ -14,6 +14,8 @@ EXTRA_OECMAKE="-DBUILD_SHARED_LIBS=ON -DREGISTER_INSTALL_PREFIX=OFF -DLIB_INSTAL
 
 PACKAGES =+ "${PN}-bash-completion"
 FILES_${PN}-bash-completion += "${bindir}/gflags_completions.sh"
+FILES_${PN} = "${libdir}/cmake/*"
+FILES_${PN} += "${libdir}/libgflags*"
 
 RDEPENDS_${PN}-bash-completion = "bash bash-completion"
 
