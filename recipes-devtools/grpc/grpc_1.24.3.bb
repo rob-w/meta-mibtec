@@ -64,4 +64,5 @@ BBCLASSEXTEND = "native nativesdk"
 
 SYSROOT_DIRS_BLACKLIST_append_class-target = "${baselib}/cmake/grpc"
 
+FILES_${PN} += "${libdir}/cmake/*"
 FILES_${PN}-dev += "${bindir}"
