@@ -17,7 +17,6 @@ KERNEL_STUFF = "kernel \
             kernel-module-dwc3 \
             kernel-module-dwc3-omap \
             kernel-module-xhci-plat-hcd \
-            kernel-module-kfifo-buf \
             kernel-module-ti-am335x-adc \
             kernel-module-ltc2499 \
             kernel-module-mcp4725 \
