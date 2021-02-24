@@ -7,7 +7,7 @@ KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb \
 			am437x-mispanel120b.dtb"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
-SRCREV = "6784ab0f60f203b5894adea6d130061d94d86284"
+SRCREV = "348e3245cddcbec26cd264102800efe4f8000487"
 PV = "4.19.38"
 BRANCH = "mis-4.19.y"
 
