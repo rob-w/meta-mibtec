@@ -1,0 +1,29 @@
+#!/bin/sh
+
+#
+# simply run up Xorg and check hard when it is available
+# needs xset tool and trys it 5 times until it retrys Xorg again
+# 
+
+export DISPLAY=":0"
+
+I=0
+while [ "$I" -lt "1" ]
+do
+	CNT=0
+	killall Xorg
+	Xorg -nolisten tcp -s 0 -br -noreset -dpms &
+	while [ "$CNT" -lt "5" ]
+	do
+		xset s reset
+		if [ "$?" -eq "0" ]
+		then
+			I=1
+			CNT=6
+		else
+			CNT=`expr "$CNT" \+ 1`
+			echo $CNT
+		fi
+	done
+done
+
