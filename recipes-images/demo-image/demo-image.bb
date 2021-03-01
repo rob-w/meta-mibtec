@@ -1,8 +1,7 @@
 #
 DESCRIPTION = "Demo image for MIBTEC Boards"
-
 IMAGE_INSTALL = "${CORE_IMAGE_EXTRA_INSTALL}"
-IMAGE_LINGUAS = " "
+IMAGE_LINGUAS = "de-de en-us es-es fr-fr"
 IMAGE_FEATURES += "package-management ssh-server-openssh"
 
 LICENSE = "MIT"
@@ -11,18 +10,16 @@ inherit core-image
 
 KERNEL_STUFF = "kernel \
             kernel-devicetree \
+            cryptodev-module \
             kernel-module-dwc3 \
             kernel-module-dwc3-omap \
             kernel-module-xhci-plat-hcd \
-            kernel-module-kfifo-buf \
             kernel-module-ti-am335x-adc \
             kernel-module-ltc2499 \
             kernel-module-mcp4725 \
             kernel-module-edt-ft5x06 \
-            kernel-module-cryptodev \
             kernel-module-sx8651 \
             kernel-module-spidev \
-            kernel-module-uio-pdrv-genirq \
             module-init-tools-depmod \
             "
 
@@ -31,21 +28,44 @@ SYSTEM_STUFF = "udev \
             busybox \
             sysvinit \
             initscripts \
-            stat \
+            omapconf \
             cpuburn-neon \
             openssl-engines \
             openssl \
+            gnupg \
             "
-
+DBG = "glibc-dbg \
+            glib-2.0-dbg \
+            gtk+3-dbg \
+            sqlite3-dbg \
+            libmodbus-dbg\
+            strace \
+            valgrind \
+            gdb \
+            "
+GTK = "gdk-pixbuf-loader-png \
+            gdk-pixbuf-loader-xpm \
+            gdk-pixbuf-loader-jpeg \
+            gdk-pixbuf-loader-gif \
+            gdk-pixbuf-loader-ani \
+            gdk-pixbuf-loader-bmp \
+            gdk-pixbuf-loader-ico \
+            gdk-pixbuf-loader-icns \
+            gdk-pixbuf-loader-bmp \
+            "
+WAYLAND = "weston \
+            weston-conf \
+            weston-examples \
+            librsvg \
+            librsvg-gtk \
+            "
 XORG_STUFF = " xserver-xorg \
-            xf86-video-omapfb \
             xf86-video-fbdev \
             xf86-input-evdev \
             xf86-input-tslib \
             xf86-input-keyboard \
             xf86-input-mouse \
             xserver-xf86-config \
-            xserver-startup \
             x11vnc \
             xinput \
             xhost \
@@ -63,65 +83,63 @@ UI_STUFF = " matchbox-wm \
             xcursor-transparent-theme \
             rxvt-unicode \
             hicolor-icon-theme \
-            gdk-pixbuf-loader-png \
-            gdk-pixbuf-loader-xpm \
-            gdk-pixbuf-loader-jpeg \
-            "
-
-ALSA_STUFF = "alsa-utils-amixer \
-            alsa-utils-aplay \
-            alsa-utils-alsamixer \
             "
 
 3D_STUFF = "ti-sgx-ddk-um \
-            omapdrm-pvr \
+            ti-sgx-ddk-km \
             fbset \
             "
 
-GST_STUFF = " \
-            gstreamer1.0 \
-            gstreamer1.0-plugins-base \
-            gstreamer1.0-plugins-good \
-           "
-
 NETWORK_STUFF = "nfs-utils-client \
-            wireless-tools \
-            bluez5 \
-            wpa-supplicant \
             init-ifupdown \
+            openssh-sftp \
+            openssh-sftp-server \
             openssh-sftp \
             ethtool \
             xinetd \
             net-snmp-client \
             iproute2 \
-            iperf3 \
+            iperf2 \
+            ntpdate \
+            wget \
+            "
+TZDATA = "tzdata \
+            tzdata-africa \
+            tzdata-americas \
+            tzdata-asia \
+            tzdata-atlantic \
+            tzdata-australia \
+            tzdata-europe \
+            tzdata-misc \
+            tzdata-pacific \
             "
 
-IMAGE_INSTALL += "mtd-utils \
-            ${KERNEL_STUFF} \
+TOOLS = "evtest \
+            cpufrequtils \
+            dosfstools \
+            i2c-tools \
+            rng-tools \
+            pv \
+            canutils \
+            dimm-eeprom \
+            "
+IMAGE_INSTALL += "${KERNEL_STUFF} \
             ${SYSTEM_STUFF} \
             ${XORG_STUFF} \
-            ${GST_STUFF} \
-            ${ALSA_STUFF} \
+            ${WAYLAND} \
+            ${DBG} \
+            ${TZDATA} \
+            ${3D_STUFF} \
             ${UI_STUFF} \
             ${NETWORK_STUFF} \
             devmem2 \
-            cpufrequtils \
             e2fsprogs \
-            dosfstools \
-            i2c-tools \
             psplash-mis \
             lsof \
             cronie \
             watchdog \
-            strace \
-            valgrind \
-            gdb \
             ncurses \
             bash \
             screen \
             procps \
-            tzdata \
-            tzdata-europe \
-            epiphany \
             "
