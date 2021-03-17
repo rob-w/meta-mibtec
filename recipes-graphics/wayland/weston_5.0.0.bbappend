@@ -27,6 +27,7 @@ SRC_URI += " \
         file://0012-compositor-drm-Add-backend-pointer-to-drm_output.patch \
         file://0013-compositor-drm-Add-drm-backend-log-debug-scope.patch \
 	file://0001-HACK-composito-drm-undef-HAVE_GBM_MODIFIERS-explicit.patch \
+	file://weston-image-fullscreen.patch \
 "
 
 INHIBIT_PACKAGE_STRIP = "1"
