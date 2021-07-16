@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=205c83c4e2242a765acb923fc766e914"
 
 PV = "1.74+git${SRCPV}"
 
-COMPATIBLE_MACHINE = "ti33x|ti43x|omap-a15|omap4"
+COMPATIBLE_MACHINE = "am65xx-evm|ti33x|ti43x|omap-a15|omap4"
 
 BRANCH ?= "master"
 #SRCREV = "40ab0a2a57dffcf7e2813fc7a526d6cde3755347"
