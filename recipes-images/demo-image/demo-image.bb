@@ -7,6 +7,9 @@ IMAGE_FEATURES += "package-management ssh-server-openssh"
 LICENSE = "MIT"
 
 inherit core-image
+inherit extrausers
+
+EXTRA_USERS_PARAMS = "usermod -P root root;"
 
 KERNEL_STUFF = "kernel \
             kernel-devicetree \
@@ -34,6 +37,7 @@ SYSTEM_STUFF = "udev \
             openssl \
             gnupg \
             "
+
 DBG = "glibc-dbg \
             glib-2.0-dbg \
             gtk+3-dbg \
@@ -42,22 +46,6 @@ DBG = "glibc-dbg \
             strace \
             valgrind \
             gdb \
-            "
-GTK = "gdk-pixbuf-loader-png \
-            gdk-pixbuf-loader-xpm \
-            gdk-pixbuf-loader-jpeg \
-            gdk-pixbuf-loader-gif \
-            gdk-pixbuf-loader-ani \
-            gdk-pixbuf-loader-bmp \
-            gdk-pixbuf-loader-ico \
-            gdk-pixbuf-loader-icns \
-            gdk-pixbuf-loader-bmp \
-            "
-WAYLAND = "weston \
-            weston-conf \
-            weston-examples \
-            librsvg \
-            librsvg-gtk \
             "
 XORG_STUFF = " xserver-xorg \
             xf86-video-fbdev \
@@ -79,10 +67,21 @@ XORG_STUFF = " xserver-xorg \
             utouch-mtview \
             "
 
-UI_STUFF = " matchbox-wm \
+WAYLAND = "weston \
+            weston-examples \
+            "
+
+UI_STUFF = "matchbox-wm \
             xcursor-transparent-theme \
             rxvt-unicode \
             hicolor-icon-theme \
+            gdk-pixbuf-loader-png \
+            gdk-pixbuf-loader-xpm \
+            gdk-pixbuf-loader-jpeg \
+            ttf-bitstream-vera\
+            gtk-engine-clearlooks \
+            gtk-theme-clearlooks \
+            psplash \
             "
 
 3D_STUFF = "ti-sgx-ddk-um \
@@ -103,6 +102,7 @@ NETWORK_STUFF = "nfs-utils-client \
             ntpdate \
             wget \
             "
+
 TZDATA = "tzdata \
             tzdata-africa \
             tzdata-americas \
@@ -118,11 +118,17 @@ TOOLS = "evtest \
             cpufrequtils \
             dosfstools \
             i2c-tools \
+            mmc-utils \
             rng-tools \
             pv \
             canutils \
             dimm-eeprom \
+            mtd-utils \
             "
+
+DEMO = "startd \
+            "
+
 IMAGE_INSTALL += "${KERNEL_STUFF} \
             ${SYSTEM_STUFF} \
             ${XORG_STUFF} \
@@ -132,6 +138,7 @@ IMAGE_INSTALL += "${KERNEL_STUFF} \
             ${3D_STUFF} \
             ${UI_STUFF} \
             ${NETWORK_STUFF} \
+            ${DEMO} \
             devmem2 \
             e2fsprogs \
             psplash-mis \
@@ -142,4 +149,7 @@ IMAGE_INSTALL += "${KERNEL_STUFF} \
             bash \
             screen \
             procps \
+            perl \
+            perl-module-socket \
+            gnuplot \
             "
