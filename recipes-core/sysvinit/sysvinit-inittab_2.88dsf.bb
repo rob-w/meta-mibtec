@@ -43,8 +43,8 @@ EOF
 # Set PACKAGE_ARCH appropriately.
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-FILES_${PN} = "${sysconfdir}/inittab"
-CONFFILES_${PN} = "${sysconfdir}/inittab"
+FILES:${PN} = "${sysconfdir}/inittab"
+CONFFILES:${PN} = "${sysconfdir}/inittab"
 
 USE_VT ?= "1"
 SYSVINIT_ENABLED_GETTYS ?= "1"

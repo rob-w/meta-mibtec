@@ -40,9 +40,9 @@ do_install () {
 
 INHIBIT_PACKAGE_STRIP = "1"
 
-INSANE_SKIP_${PN} += "ldflags dev-so staticdev"
+INSANE_SKIP:${PN} += "ldflags dev-so staticdev"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     /opt/img-powervr-sdk/PVRHub/* \
     /opt/img-powervr-sdk/PVRScopeDeveloper/* \
 "

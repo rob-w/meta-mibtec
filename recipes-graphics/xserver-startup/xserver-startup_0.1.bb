@@ -8,7 +8,7 @@ PR = "r1"
 SRC_URI = "file://xinit"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-FILES_${PN} += "${usrbindir}/*"
+FILES:${PN} += "${usrbindir}/*"
 
 do_install () {
 	install -d ${D}/${bindir}

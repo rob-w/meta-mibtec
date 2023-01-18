@@ -1,7 +1,7 @@
 DESCRIPTION = "An Open Source MQTT v3.1/v3.1.1 Broker"
 HOMEPAGE = "http://www.mosquitto.org"
 DEPENDS = "openssl libwebsockets util-linux-libuuid"
-RDEPENDS_${PN} = "libcrypto libssl util-linux-libuuid libwebsockets"
+RDEPENDS:${PN} = "libcrypto libssl util-linux-libuuid libwebsockets"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=62ddc846179e908dc0c8efec4a42ef20"
 
@@ -29,6 +29,6 @@ do_install() {
 	oe_runmake install DESTDIR=${D}
 }
 
-FILES_${PN} = "${bindir} ${sbindir} ${libdir}  ${sysconfdir}"
+FILES:${PN} = "${bindir} ${sbindir} ${libdir}  ${sysconfdir}"
 
-INSANE_SKIP_${PN} = "already-stripped"
+INSANE_SKIP:${PN} = "already-stripped"

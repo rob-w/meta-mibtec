@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI += "file://fstab"
 dirs755 = "/bin /boot /dev ${sysconfdir} ${sysconfdir}/default \
            ${sysconfdir}/skel /lib /mnt /proc ${ROOT_HOME} /sbin \

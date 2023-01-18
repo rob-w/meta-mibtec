@@ -1,7 +1,7 @@
 DESCRIPTION = "libwebsockets library"
 HOMEPAGE = "https://libwebsockets.org"
 DEPENDS = "zlib openssl"
-RDEPENDS_${PN} = "libcrypto libssl util-linux-libuuid"
+RDEPENDS:${PN} = "libcrypto libssl util-linux-libuuid"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=041a1dec49ec8a22e7f101350fd19550"
 
@@ -19,13 +19,13 @@ EXTRA_OECONF += "--enable-openssl --enable-libcrypto"
 # add ${PN}-test-server package
 PACKAGES =+ "${PN}-test-server"
 
-FILES_${PN}-test-server += "${bindir}/libwebsockets-test-* \
+FILES:${PN}-test-server += "${bindir}/libwebsockets-test-* \
 							${datadir}/libwebsockets-test-server"
 
-RDEPENDS_${PN}-test-server += "${PN}"
+RDEPENDS:${PN}-test-server += "${PN}"
 
 
-do_compile_prepend() {
+do_compile:prepend() {
 	export LD_LIBRARY_PATH=${STAGING_LIBDIR_NATIVE} 
 	cmake .
 }

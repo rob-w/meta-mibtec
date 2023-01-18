@@ -18,4 +18,4 @@ do_install () {
     install -m 0644 ${WORKDIR}/wayland_env.sh ${D}${sysconfdir}/profile.d/
 }
 
-FILES_${PN} += "${sysconfdir}/profile.d/* ${sysconfdir}/weston.ini"
+FILES:${PN} += "${sysconfdir}/profile.d/* ${sysconfdir}/weston.ini"

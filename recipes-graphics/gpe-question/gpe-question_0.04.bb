@@ -5,7 +5,7 @@ inherit gpe
 SRC_URI += "file://makefile-fix.patch"
 
 DEPENDS = "libgpewidget"
-RDEPENDS_${PN} = "gpe-icons"
+RDEPENDS:${PN} = "gpe-icons"
 SECTION = "gpe"
 DESCRIPTION = "GPE interface for asking questions from shell scripts"
 PR = "r1"

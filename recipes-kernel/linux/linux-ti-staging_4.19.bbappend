@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-4.19:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}-4.19:"
 
 KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb \
 			am437x-mispanel070f.dtb \

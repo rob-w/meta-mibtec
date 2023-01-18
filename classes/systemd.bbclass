@@ -1,4 +1,4 @@
-#DEPENDS_append = " systemd-systemctl-native"
+#DEPENDS:append = " systemd-systemctl-native"
 
 SYSTEMD_AUTO_ENABLE ??= "enable"
 
@@ -79,7 +79,7 @@ python __anonymous() {
 }
 
 # automatically install all *.service and *.socket supplied in recipe's SRC_URI
-do_install_append() {
+do_install:append() {
     for service in `find ${WORKDIR} -maxdepth 1 -name '*.service' -o -name '*.socket'` ; do
 	# ensure installing systemd-files only (e.g not avahi *.service)
 	if grep -q '\[Unit\]' $service ; then
@@ -89,7 +89,7 @@ do_install_append() {
     done
 }
 
-python populate_packages_prepend () {
+python populate_packages:prepend () {
 	def systemd_generate_package_scripts(pkg):
 		bb.debug(1, 'adding systemd calls to postinst/postrm for %s' % pkg)
 		localdata = bb.data.createCopy(d)
@@ -106,32 +106,32 @@ python populate_packages_prepend () {
 		if not postinst:
 			postinst = '#!/bin/sh\n'
 		postinst += bb.data.getVar('systemd_postinst', localdata, 1)
-		bb.data.setVar('pkg_postinst_%s' % pkg, postinst, d)
+		bb.data.setVar('pkg_postinst:%s' % pkg, postinst, d)
 
 		prerm = bb.data.getVar('pkg_prerm', localdata, 1)
 		if not prerm:
 			prerm = '#!/bin/sh\n'
 		prerm += bb.data.getVar('systemd_prerm', localdata, 1)
-		bb.data.setVar('pkg_prerm_%s' % pkg, prerm, d)
+		bb.data.setVar('pkg_prerm:%s' % pkg, prerm, d)
 
 		postrm = bb.data.getVar('pkg_postrm', localdata, 1)
 		if not postrm:
 			postrm = '#!/bin/sh\n'
 		postrm += bb.data.getVar('systemd_postrm', localdata, 1)
-		bb.data.setVar('pkg_postrm_%s' % pkg, postrm, d)
+		bb.data.setVar('pkg_postrm:%s' % pkg, postrm, d)
 
-	# add files to FILES_*-systemd if existent and not already done
+	# add files to FILES:*-systemd if existent and not already done
 	def systemd_append_file(pkg_systemd, file_append):
 		appended = False
 		if os.path.exists('${D}' + file_append):
-			var_name = "FILES_" + pkg_systemd
+			var_name = "FILES:" + pkg_systemd
 			files = d.getVar(var_name, 0) or ""
 			if file_append not in files.split():
 				d.setVar(var_name, "%s %s" % (files, file_append))
 				appended = True
 		return appended
 
-	# add systemd files to FILES_*-systemd, parse for Also= and follow recursive
+	# add systemd files to FILES:*-systemd, parse for Also= and follow recursive
 	def systemd_add_files_and_parse(pkg_systemd, path, service, keys):
 		# avoid infinite recursion
 		if systemd_append_file(pkg_systemd, path + service):
@@ -179,8 +179,8 @@ python populate_packages_prepend () {
 
 	# *-systemd packages get RDEPENDS to systemd and their base package
 	def systemd_add_rdepends(pkg_systemd):
-		# RDEPENDS_${pkg_systemd} += pkg_systemd_base systemd
-		rdepends = d.getVar('RDEPENDS_' + pkg_systemd, 1) or ""
+		# RDEPENDS:${pkg_systemd} += pkg_systemd_base systemd
+		rdepends = d.getVar('RDEPENDS:' + pkg_systemd, 1) or ""
 		rdepends_arr = rdepends.split()
 		if not 'systemd' in rdepends_arr:
 			rdepends = '%s %s' % (rdepends, 'systemd')
@@ -191,7 +191,7 @@ python populate_packages_prepend () {
 		# avoid double entries
 		if len(rdepends_arr) == 0 and pkg_systemd != '${PN}' and not pkg_systemd_base in rdepends:
 			rdepends = '%s %s' % (rdepends, pkg_systemd_base)
-		d.setVar('RDEPENDS_' + pkg_systemd, rdepends)
+		d.setVar('RDEPENDS:' + pkg_systemd, rdepends)
 
 
 	# run all modifications once when creating package

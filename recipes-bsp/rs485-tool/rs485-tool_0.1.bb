@@ -8,7 +8,7 @@ SRC_URI = "file://rs485-tool.c"
 S = "${WORKDIR}"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-FILES_${PN} += "${usrbindir}/*"
+FILES:${PN} += "${usrbindir}/*"
 
 do_compile () {
 	${CC} ${WORKDIR}/rs485-tool.c -o ${WORKDIR}/rs485-tool

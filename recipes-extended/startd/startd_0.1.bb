@@ -26,7 +26,7 @@ def get_cflags_year():
  myextracflags = time.strftime("%y", time.gmtime())
  return myextracflags
 
-CFLAGS_append += "-DBDAY=${@get_cflags_day()} -DBMONTH=${@get_cflags_month()} -DBYEAR=${@get_cflags_year()}"
+CFLAGS:append += "-DBDAY=${@get_cflags_day()} -DBMONTH=${@get_cflags_month()} -DBYEAR=${@get_cflags_year()}"
 
 TARGET_CC_ARCH += "${LDFLAGS}" 
 
