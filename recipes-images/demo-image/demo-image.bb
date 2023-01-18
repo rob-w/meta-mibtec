@@ -54,7 +54,6 @@ GTK = "gdk-pixbuf-loader-png \
             gdk-pixbuf-loader-bmp \
             "
 WAYLAND = "weston \
-            weston-conf \
             weston-examples \
             librsvg \
             librsvg-gtk \

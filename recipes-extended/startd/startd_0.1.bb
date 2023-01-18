@@ -9,7 +9,7 @@ PR = "r1"
 SRC_URI = "file://startd.c \
            file://Makefile "
 
-S = "${WORKDIR}/"
+S = "${WORKDIR}"
 
 def get_cflags_day():
  import time
