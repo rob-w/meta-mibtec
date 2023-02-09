@@ -8,7 +8,7 @@ then
 	M=3
 	dd if=/sys/bus/i2c/devices/0-0051/eeprom of=/media/ram/temp bs=1 count=13 skip=68 >& /dev/null
 	VER=`cut -c 0-4 /media/ram/temp`
-	if [ "$VER" == "1304" ] || [ "$VER" == "1401" ]
+	if [ "$VER" == "1304" ] || [ "$VER" == "1401" ] || [ "$VER" == "1501" ]
 	then
 		M=3
 	else
