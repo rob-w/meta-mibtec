@@ -12,7 +12,7 @@ BRANCH ?= "master"
 #SRCREV = "40ab0a2a57dffcf7e2813fc7a526d6cde3755347"
 SRCREV = "d7a461c0d6c6bcf986f991d4bcee130562b040d6"
 
-SRC_URI = "https://github.com/omapconf/omapconf.git;protocol=git;branch=${BRANCH}"
+SRC_URI = "git://github.com/omapconf/omapconf.git;protocol=https;branch=${BRANCH}"
 
 S = "${WORKDIR}/git"
 
