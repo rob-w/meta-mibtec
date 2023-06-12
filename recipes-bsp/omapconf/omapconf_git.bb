@@ -9,8 +9,7 @@ PV = "1.74+git${SRCPV}"
 COMPATIBLE_MACHINE = "ti33x|ti43x|omap-a15|omap4"
 
 BRANCH ?= "master"
-#SRCREV = "40ab0a2a57dffcf7e2813fc7a526d6cde3755347"
-SRCREV = "d7a461c0d6c6bcf986f991d4bcee130562b040d6"
+SRCREV = "ff07b6992bacb1e1586c72b7d2be469caee4a347"
 
 SRC_URI = "git://github.com/omapconf/omapconf.git;protocol=https;branch=${BRANCH}"
 
