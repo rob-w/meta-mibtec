@@ -12,7 +12,7 @@ then
 	then
 		M=3
 	else
-		echo 110 > /media/ram/temp
+		echo -n 110 > /media/ram/temp
 	fi
 fi
 
