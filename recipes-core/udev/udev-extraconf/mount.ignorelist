@@ -3,4 +3,4 @@
 /dev/mtdblock
 /dev/md
 /dev/dm-*
-/dev/mmcblk1p*
+/dev/mmcblk*
