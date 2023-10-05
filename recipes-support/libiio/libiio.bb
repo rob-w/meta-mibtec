@@ -5,7 +5,8 @@ DEPENDS = "avahi bison flex libxml2 ncurses"
 
 SRCREV = "565bf68eccfdbbf22cf5cb6d792e23de564665c7"
 
-SRC_URI = "git://github.com/analogdevicesinc/libiio.git"
+SRC_URI = "git://github.com/analogdevicesinc/libiio.git \
+           file://0001-remove-warning.patch"
 
 S = "${WORKDIR}/git"
 

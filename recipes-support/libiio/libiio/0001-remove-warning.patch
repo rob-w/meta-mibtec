@@ -1,0 +1,26 @@
+From 1e795a4ee4b3adf658f4246d92e9953987d4632b Mon Sep 17 00:00:00 2001
+From: Robert Woerle <robert@linuxdevelopment.de>
+Date: Thu, 5 Oct 2023 07:01:31 +0000
+Subject: [PATCH] remove warning
+
+Signed-off-by: Robert Woerle <robert@linuxdevelopment.de>
+---
+ local.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/local.c b/local.c
+index 1004b00..d05c2d7 100644
+--- a/local.c
++++ b/local.c
+@@ -974,7 +974,7 @@ static int local_open(const struct iio_device *dev,
+ 
+ 	if (!pdata->is_high_speed) {
+ 		unsigned long size = samples_count * pdata->max_nb_blocks;
+-		IIO_WARNING("High-speed mode not enabled\n");
++		/// IIO_WARNING("High-speed mode not enabled\n");
+ 
+ 		/* Cyclic mode is only supported in high-speed mode */
+ 		if (cyclic) {
+-- 
+2.17.1
+
