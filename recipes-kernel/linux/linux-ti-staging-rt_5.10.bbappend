@@ -13,7 +13,7 @@ KERNEL_DEVICETREE = "am437x-misdimm-evm.dtb \
 			am335x-d850anpass062.dtb"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-SRCREV = "da37cd3ba686107ab596c2c6b8e7a56254deecda"
+SRCREV = "3ffc58129ff001ff2b5466c42a1d213e4c6baf33"
 BRANCH = "rt-mis-5.10.y"
 
 PV = "5.10.100"
