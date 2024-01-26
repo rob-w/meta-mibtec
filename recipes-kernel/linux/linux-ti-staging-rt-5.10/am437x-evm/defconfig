@@ -2346,7 +2346,8 @@ CONFIG_PPS=y
 #
 # CONFIG_PPS_CLIENT_KTIMER is not set
 # CONFIG_PPS_CLIENT_LDISC is not set
-CONFIG_PPS_CLIENT_GPIO=m
+# CONFIG_PPS_CLIENT_GMTIMER is not set
+# CONFIG_PPS_CLIENT_GPIO is not set
 
 #
 # PPS generators support
