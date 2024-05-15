@@ -13,11 +13,11 @@ KERNEL_DEVICETREE = "am437x-misdimm-evm.dtb \
 			am335x-d850anpass062.dtb"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-SRCREV = "2dd939e40a96d3b2134bad696357cef9550de5f5"
+SRCREV = "baa12fd4e820a3e3d7eddd4026fd2ae8cb2080d7"
 BRANCH = "rt-mis-5.10.y"
 
 PV = "5.10.100"
-PR = "mis-01-2dd939e40a"
+PR = "mis-01"
 
 #KERNEL_GIT_URI = "git://github.com/rob-w/mibtec-kernel"
 KERNEL_GIT_URI = "git://home.mibtec.de:32121/data/devel/git/linux/kernel/mibtec-kernels"
