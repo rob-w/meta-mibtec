@@ -28,7 +28,6 @@ SYSTEM_STUFF = "udev \
             busybox \
             sysvinit \
             initscripts \
-            omapconf \
             cpuburn-neon \
             openssl-engines \
             openssl \
@@ -59,10 +58,8 @@ WAYLAND = "weston \
             librsvg-gtk \
             "
 XORG_STUFF = " xserver-xorg \
-            xf86-video-fbdev \
             xf86-input-evdev \
             xf86-input-tslib \
-            xf86-input-keyboard \
             xf86-input-mouse \
             xserver-xf86-config \
             x11vnc \
@@ -99,7 +96,7 @@ NETWORK_STUFF = "nfs-utils-client \
             net-snmp-client \
             iproute2 \
             iperf2 \
-            ntpdate \
+            htpdate \
             wget \
             "
 TZDATA = "tzdata \
