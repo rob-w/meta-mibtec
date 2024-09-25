@@ -14,7 +14,7 @@ KERNEL_DEVICETREE = "   ti/omap/am437x-misdimm-evm.dtb \
 			ti/omap/am335x-d850anpass062.dtb"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-SRCREV = "944842ec08144334d90d3e602f26bd474e724712"
+SRCREV = "6cc6a16d7c4a2da81e9bd3eae935a009e8e94626"
 BRANCH = "rt-mis-6.6.y"
 
 PV = "6.6.32"
