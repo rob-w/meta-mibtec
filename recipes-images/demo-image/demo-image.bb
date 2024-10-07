@@ -11,15 +11,6 @@ inherit core-image
 KERNEL_STUFF = "kernel \
             kernel-devicetree \
             cryptodev-module \
-            kernel-module-dwc3 \
-            kernel-module-dwc3-omap \
-            kernel-module-xhci-plat-hcd \
-            kernel-module-ti-am335x-adc \
-            kernel-module-ltc2499 \
-            kernel-module-mcp4725 \
-            kernel-module-edt-ft5x06 \
-            kernel-module-sx8651 \
-            kernel-module-spidev \
             module-init-tools-depmod \
             "
 
