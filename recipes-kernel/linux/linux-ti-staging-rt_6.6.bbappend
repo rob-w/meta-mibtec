@@ -14,11 +14,8 @@ KERNEL_DEVICETREE = "   ti/omap/am437x-misdimm-evm.dtb \
 			ti/omap/am335x-d850anpass062.dtb"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-SRCREV = "bf8868204f83373484325853c00e7a1d5a98ea97"
+SRCREV = "29ffba81413bca4b93497d1ef57c57a563b7f671"
 BRANCH = "rt-mis-6.6.y"
-
-PV = "6.6.32"
-PR = "mis-01"
 
 #KERNEL_GIT_URI = "git://github.com/rob-w/mibtec-kernel"
 KERNEL_GIT_URI = "git://home.mibtec.de:32125/data/devel/git/linux/kernel/mibtec-kernels"
@@ -27,3 +24,5 @@ SRC_URI = "${KERNEL_GIT_URI};protocol=${KERNEL_GIT_PROTOCOL};branch=${BRANCH} \
             file://defconfig \
             file://configs/empty \
            "
+KERNEL_DTBDEST = "${KERNEL_IMAGEDEST}"
+KERNEL_DTBVENDORED = "false"
