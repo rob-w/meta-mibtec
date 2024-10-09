@@ -32,4 +32,5 @@ fi
 export PATH PS1 OPIEDIR QPEDIR QTDIR EDITOR TERM
 alias rwm="mount -orw,remount /"
 alias rom="mount -oro,remount /"
+export DISPLAY=":0"
 umask 022
