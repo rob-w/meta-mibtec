@@ -4,7 +4,7 @@ PRIORITY = "required"
 DEPENDS = "startd"
 LICENSE = "GPLv2"
 
-PV = "0.5.0"
+PV = "0.6.0"
 PR = "r1"
 LIC_FILES_CHKSUM = "file://README;md5=de528607e16bea67502b135244e2ec27"
 S = "${WORKDIR}"

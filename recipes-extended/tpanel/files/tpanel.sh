@@ -32,10 +32,15 @@ then
 	else
 		dd if=/sys/bus/i2c/devices/0-0051/eeprom of=/media/ram/temp bs=1 count=13 skip=68 >& /dev/null
 		VER=`cut -c 0-4 /media/ram/temp`
-		if [ "$VER" == "1406" ] || [ "$VER" == "1404" ] || [ "$VER" == "1306" ] || [ "$VER" == "1304" ] || [ "$VER" == "1204" ]
+		if [ "$VER" -ge "1204" ]
 		then
 			M=5
 		fi
+#		if [ "$VER" == "1406" ] || [ "$VER" == "1404" ] || [ "$VER" == "1306" ] || [ "$VER" == "1415" ]
+#			|| [ "$VER" == "1409" ] || [ "$VER" == "1304" ] || [ "$VER" == "1204" ]
+#		then
+#			M=5
+#		fi
 	fi
 fi
 
