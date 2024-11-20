@@ -6,15 +6,17 @@ KERNEL_DEVICETREE = "   ti/omap/am437x-misdimm-evm.dtb \
 			ti/omap/am437x-mispanel070h.dtb \
 			ti/omap/am437x-mismdis070a.dtb \
 			ti/omap/am437x-d880tsm092.dtb \
+			ti/omap/am437x-d880tsm093.dtb \
 			ti/omap/am437x-d880tsm094.dtb \
 			ti/omap/am437x-mispanel120b.dtb \
 			ti/omap/am335x-d850e054.dtb \
 			ti/omap/am335x-d850basis053.dtb \
 			ti/omap/am335x-d850anpass060.dtb \
-			ti/omap/am335x-d850anpass062.dtb"
+			ti/omap/am335x-d850anpass062.dtb \
+			"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-SRCREV = "29ffba81413bca4b93497d1ef57c57a563b7f671"
+SRCREV = "289f1db4f87ef4675cb4e7e372c792fb41a4ffb4"
 BRANCH = "rt-mis-6.6.y"
 
 #KERNEL_GIT_URI = "git://github.com/rob-w/mibtec-kernel"
