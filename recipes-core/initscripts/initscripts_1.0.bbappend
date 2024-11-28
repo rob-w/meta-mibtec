@@ -1,6 +1,5 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI += "file://volatiles"
-SRC_URI += "file://bootmisc.sh"
 
 PR = "r1"
 
