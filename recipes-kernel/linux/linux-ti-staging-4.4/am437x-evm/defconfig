@@ -3729,6 +3729,7 @@ CONFIG_MCP4725=m
 # CONFIG_IIO_ST_PRESS is not set
 # CONFIG_T5403 is not set
 CONFIG_AP4A=m
+CONFIG_WF100DP=m
 
 #
 # Lightning sensors
