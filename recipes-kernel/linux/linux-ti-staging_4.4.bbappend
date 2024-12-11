@@ -6,7 +6,7 @@ KERNEL_DEVICETREE_ti43x = "am437x-misdimm-evm.dtb \
 			am437x-mismdis070a.dtb \
 			am437x-mispanel120b.dtb"
 
-SRCREV = "ef4c352f32c60c2d602bc44cd2c95faf2eeba96c"
+SRCREV = "fd672505309ace27f4117f8dc3177285c7bd249e"
 PV = "4.4.41"
 BRANCH = "mis-4.4.y"
 KERNEL_GIT_URI = "git://github.com/rob-w/mibtec-kernel"
