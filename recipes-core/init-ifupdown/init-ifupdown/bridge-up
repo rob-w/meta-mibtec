@@ -1,0 +1,49 @@
+#!/bin/sh
+
+[ -x /sbin/ip ] || exit 0
+[ -x /sbin/bridge ] || exit 0
+
+BRIDGE="$IFACE"
+INTERFACES_FILE="/etc/network/interfaces"
+
+get_value() {
+    awk -v iface="$BRIDGE" -v key="$1" '
+    $1 == "iface" && $2 == iface { found = 1; next }
+    found && $1 == key { print $2; exit }
+    found && $0 ~ /^auto|^iface/ { exit }
+    ' "$INTERFACES_FILE"
+}
+
+get_list() {
+    awk -v iface="$BRIDGE" -v key="$1" '
+    $1 == "iface" && $2 == iface { found = 1; next }
+    found && $1 == key { for (i=2; i<=NF; i++) print $i; exit }
+    found && $0 ~ /^auto|^iface/ { exit }
+    ' "$INTERFACES_FILE"
+}
+
+bridge_stp=$(get_value bridge_stp)
+bridge_fd=$(get_value bridge_fd)
+bridge_ports=$(get_list bridge_ports)
+
+[ -n "$bridge_ports" ] || exit 0
+
+# Create bridge if not exists
+ip link show "$BRIDGE" >/dev/null 2>&1 || ip link add name "$BRIDGE" type bridge
+
+# Bridge options
+[ "$bridge_stp" = "on" ] && echo 1 > /sys/class/net/$BRIDGE/bridge/stp_state
+[ "$bridge_stp" = "off" ] && echo 0 > /sys/class/net/$BRIDGE/bridge/stp_state
+
+[ -n "$bridge_fd" ] && echo "$bridge_fd" > /sys/class/net/$BRIDGE/bridge/forward_delay
+
+# Add ports
+for port in $bridge_ports; do
+    ip link set "$port" up
+    ip link set "$port" master "$BRIDGE"
+done
+
+ip link set "$BRIDGE" up
+
+exit 0
+

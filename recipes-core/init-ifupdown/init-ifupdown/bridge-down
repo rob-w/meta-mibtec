@@ -1,0 +1,26 @@
+#!/bin/sh
+
+[ -x /sbin/ip ] || exit 0
+
+BRIDGE="$IFACE"
+INTERFACES_FILE="/etc/network/interfaces"
+
+get_list() {
+    awk -v iface="$BRIDGE" -v key="$1" '
+    $1 == "iface" && $2 == iface { found = 1; next }
+    found && $1 == key { for (i=2; i<=NF; i++) print $i; exit }
+    found && $0 ~ /^auto|^iface/ { exit }
+    ' "$INTERFACES_FILE"
+}
+
+bridge_ports=$(get_list bridge_ports)
+
+for port in $bridge_ports; do
+    ip link set "$port" nomaster
+done
+
+ip link set "$BRIDGE" down
+ip link delete "$BRIDGE" type bridge
+
+exit 0
+
