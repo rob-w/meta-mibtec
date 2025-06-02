@@ -16,7 +16,7 @@ KERNEL_DEVICETREE = "   ti/omap/am437x-misdimm-evm.dtb \
 			"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-SRCREV = "ed02545c7d897094ce57f581dd999c00eb851405"
+SRCREV = "62216439814979d04c9d1e348b8ca0b269700def"
 BRANCH = "rt-mis-6.6.y"
 
 #KERNEL_GIT_URI = "git://github.com/rob-w/mibtec-kernel"
