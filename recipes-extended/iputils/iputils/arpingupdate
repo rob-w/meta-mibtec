@@ -1,0 +1,45 @@
+#!/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+# Capture env vars passed by ifup
+iface="$IFACE"
+ipaddr="$IF_ADDRESS"
+
+# Where to log
+logfile="/media/ram/${iface}.log"
+
+# Ensure log directory exists
+mkdir -p /media/ram
+echo "start $iface" >> "$logfile"
+
+# Run the rest in background (non-blocking)
+nohup bash <<EOF >> "$logfile" 2>&1 &
+	PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+	MAX_WAIT=25
+	WAITED=0
+
+	# Wait for link to come up
+	while [ "\$WAITED" -lt "\$MAX_WAIT" ]; do
+		LINK_STATE=\$(cat /sys/class/net/$iface/carrier 2>/dev/null)
+		echo "waiting on $iface $ipaddr ..carrier=\$LINK_STATE.."
+
+		if [ "\$LINK_STATE" = "1" ]; then
+			break
+		fi
+
+		sleep 1
+		WAITED=\$((WAITED + 1))
+	done
+
+	echo "Link up after \$WAITED seconds"
+
+	# Send gratuitous ARP
+	arping -c 1 -A -I "$iface" "$ipaddr"
+EOF
+
+# Detach from terminal
+disown
+
+exit 0
+
