@@ -1,16 +1,17 @@
---- pil21/src/Makefile	2025-09-09 10:18:26.267518538 +0200
-+++ pil21/src/Makefile	2025-09-09 10:29:23.310604570 +0200
+--- pil21/src/Makefile	2025-09-06 16:28:40.000000000 +0200
++++ pil21/src/Makefile	2025-09-10 15:29:41.168078932 +0200
 @@ -1,22 +1,17 @@
  # 06sep25 Software Lab. Alexander Burger
  
 -.SILENT:
  
 -CC = clang
-+CC ?= clang
- PIL = ../pil  # pil
+-PIL = ../pil  # pil
 -ASM = opt -O2  # llvm-as
 -LLC = llc
 -LINK = llvm-link
++CC ?= clang
++PIL ?= ../pil  # pil
 +ASM ?= opt -O2  # llvm-as
 +LLC ?= llc
 +LINK ?= llvm-link
@@ -31,7 +32,7 @@
  
  BIN = ../bin
  LIB = ../lib
-@@ -29,11 +24,11 @@
+@@ -29,7 +24,7 @@
  
  # System definitions
  $(LIB)/sysdefs: sysdefs.c
@@ -40,8 +41,12 @@
  
  # Base system
  $(BIN)/picolisp: picolisp.bc
--	mkdir -p $(BIN)
-+	mkdir -p $(BIN) $(LIB)
- 	$(LLC) picolisp.bc -relocation-model=pic -o picolisp.s
- 	$(CC) picolisp.s -o $(BIN)/picolisp -rdynamic -lc -lutil -lm -ldl `pkg-config --libs readline libffi`
- 	$(STRIP) $(BIN)/picolisp
+@@ -54,7 +49,7 @@
+ # Base system as shared library
+ $(LIB)/picolisp.so: picolisp.so.bc
+ 	$(LLC) picolisp.so.bc -relocation-model=pic -o picolisp.so.s
+-	$(CC) picolisp.so.s -o $(LIB)/picolisp.so $(SHARED)
++	$(CC) picolisp.so.s -o $(LIB)/picolisp.so $(SHARED) -Wl,-soname,libpicolisp.so.1
+ 	$(STRIP) $(LIB)/picolisp.so
+ 
+ picolisp.so.bc: base.so.bc lib.so.bc
