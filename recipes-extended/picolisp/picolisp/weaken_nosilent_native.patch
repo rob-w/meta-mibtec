@@ -1,0 +1,34 @@
+--- pil21/src/Makefile	2025-09-06 16:28:40.000000000 +0200
++++ pil21/src/Makefile	2025-09-10 14:27:27.773047205 +0200
+@@ -1,22 +1,17 @@
+ # 06sep25 Software Lab. Alexander Burger
+ 
+-.SILENT:
+ 
+-CC = clang
+-PIL = ../pil  # pil
+-ASM = opt -O2  # llvm-as
+-LLC = llc
+-LINK = llvm-link
++CC ?= clang
++PIL ?= ../pil  # pil
++ASM ?= opt -O2  # llvm-as
++LLC ?= llc
++LINK ?= llvm-link
+ SHARED = -shared
+-STRIP = strip
++STRIP ?= strip
++LLVM_CONFIG ?= llvm-config
+ 
+-LLVM = $(shell llvm-config --version | cut -d. -f1)
+-ifeq ($(shell test $(LLVM) -ge 15 -a $(LLVM) -lt 17; echo $$?), 0)
+-	ASM += -opaque-pointers
+-endif
+-
+-OS = $(shell uname)
+-CPU = $(shell uname -m)
++OS ?= $(shell uname)
++CPU ?= $(shell uname -m)
+ 
+ BIN = ../bin
+ LIB = ../lib
