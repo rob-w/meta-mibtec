@@ -1,0 +1,21 @@
+From c2fd50db9486bf80f93afe4430c45de77559eae7 Mon Sep 17 00:00:00 2001
+From: Robert Woerle <rwoerle@mibtec.de>
+Date: Sat, 13 Sep 2025 12:40:43 +0000
+Subject: [PATCH] pil-native
+
+Signed-off-by: Robert Woerle <rwoerle@mibtec.de>
+---
+ pil | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pil b/pil
+index e24e1cb..41e9790 100755
+--- a/pil
++++ b/pil
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-exec ${0%/*}/bin/picolisp ${0%/*}/lib.l @ext.l "$@"
++exec picolisp ${0%/*}/../lib/picolisp/lib.l @ext.l "$@"
+-- 
+2.34.1
+
