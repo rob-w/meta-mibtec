@@ -12,7 +12,7 @@ SRC_URI = "git://github.com/picolisp/pil21.git;protocol=https;branch=master \
 
 inherit autotools pkgconfig
 S = "${WORKDIR}/git"
-PR = "1"
+PR = "13"
 
 TOOLCHAIN = "clang"
 TOOLCHAIN:forcevariable = "clang"
