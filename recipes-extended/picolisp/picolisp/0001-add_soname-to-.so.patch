@@ -1,0 +1,26 @@
+From e0d8c3e7fdda1500eb4f6c9652c9033e46489d1b Mon Sep 17 00:00:00 2001
+From: Robert Woerle <rwoerle@mibtec.de>
+Date: Sat, 13 Sep 2025 12:22:59 +0000
+Subject: [PATCH] add_soname to .so
+
+Signed-off-by: Robert Woerle <rwoerle@mibtec.de>
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index d91a109..82b1dbf 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -47,7 +47,7 @@ lib.bc: pico.h lib.c
+ # Base system as shared library
+ $(LIB)/picolisp.so: picolisp.so.bc
+ 	$(LLC) picolisp.so.bc -relocation-model=pic -o picolisp.so.s
+-	$(CC) picolisp.so.s -o $(LIB)/picolisp.so $(SHARED)
++	$(CC) picolisp.so.s -o $(LIB)/picolisp.so $(SHARED) -Wl,-soname,libpicolisp.so.1
+ 	$(STRIP) $(LIB)/picolisp.so
+ 
+ picolisp.so.bc: base.so.bc lib.so.bc
+-- 
+2.34.1
+

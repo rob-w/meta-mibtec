@@ -6,8 +6,8 @@
 -.SILENT:
  
 -CC = clang
--PIL = ../pil  # pil
--ASM = opt -O2  # llvm-as
+-PIL = ../pil
+-ASM = opt -O2
 -LLC = llc
 -LINK = llvm-link
 +CC ?= clang

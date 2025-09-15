@@ -1,0 +1,48 @@
+From 517b79fda1edf5a17ed76f57fe4b2225f4a60902 Mon Sep 17 00:00:00 2001
+From: Robert Woerle <rwoerle@mibtec.de>
+Date: Sat, 13 Sep 2025 12:15:19 +0000
+Subject: [PATCH] weaken vars
+
+Signed-off-by: Robert Woerle <rwoerle@mibtec.de>
+---
+ src/Makefile | 23 ++++++++---------------
+ 1 file changed, 8 insertions(+), 15 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index ea09cf6..b1153c4 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,22 +1,15 @@
+ # 13sep25 Software Lab. Alexander Burger
+ 
+-.SILENT:
+-
+-CC = clang
+-PIL = ../pil
+-ASM = opt -O2
+-LLC = llc
+-LINK = llvm-link
++CC ?= clang
++PIL ?= ../pil
++ASM ?= opt -O2
++LLC ?= llc
++LINK ?= llvm-link
+ SHARED = -shared
+-STRIP = strip
+-
+-LLVM = $(shell llvm-config --version | cut -d. -f1)
+-ifeq ($(shell test $(LLVM) -ge 15 -a $(LLVM) -lt 17; echo $$?), 0)
+-	ASM += -opaque-pointers
+-endif
++STRIP ?= strip
+ 
+-OS = $(shell uname)
+-CPU = $(shell uname -m)
++OS ?= $(shell uname)
++CPU ?= $(shell uname -m)
+ 
+ BIN = ../bin
+ LIB = ../lib
+-- 
+2.34.1
+

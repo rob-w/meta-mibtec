@@ -1,0 +1,26 @@
+From ef71406fa0084ff4d45b01371237c897a87e9b21 Mon Sep 17 00:00:00 2001
+From: Robert Woerle <rwoerle@mibtec.de>
+Date: Sat, 13 Sep 2025 12:21:30 +0000
+Subject: [PATCH] sysdef_target_arch
+
+Signed-off-by: Robert Woerle <rwoerle@mibtec.de>
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index b1153c4..d91a109 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -22,7 +22,7 @@ so: $(LIB)/picolisp.so
+ 
+ # System definitions
+ $(LIB)/sysdefs: sysdefs.c
+-	$(CC) -w -D_OS='"$(OS)"' -D_CPU='"$(CPU)"' sysdefs.c  &&  ./a.out > $(LIB)/sysdefs  &&  rm ./a.out
++	$(CC) -w -D_OS='"$(OS)"' -D_CPU='"$(CPU)"' sysdefs.c -o sysdef
+ 
+ # Base system
+ $(BIN)/picolisp: picolisp.bc
+-- 
+2.34.1
+
