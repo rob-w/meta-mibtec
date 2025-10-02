@@ -5,14 +5,16 @@ MAINTAINER = "Robert Woerle <robert@linuxdevelopment.de>"
 LICENSE = "MIT"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=034095b4fa32d26e4fcec43d09081f86"
-SRCREV = "34a70382dca8b0df61df09e4c503c940df65410f"
+#SRCREV = "34a70382dca8b0df61df09e4c503c940df65410f"
+SRCREV = "1ccd5dbfdc47c164168f0064a6241731fd4286d3"
 SRC_URI = "git://github.com/picolisp/pil21.git;protocol=https;branch=master \
 	file://0001-weaken-vars.patch \
+	file://0001-only-exclude-main.patch \
 	"
 
 inherit autotools pkgconfig
 S = "${WORKDIR}/git"
-PR = "13"
+PR = "25"
 
 TOOLCHAIN = "clang"
 TOOLCHAIN:forcevariable = "clang"

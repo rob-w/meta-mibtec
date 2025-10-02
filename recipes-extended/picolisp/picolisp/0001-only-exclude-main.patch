@@ -1,0 +1,37 @@
+From 1e1b3a1b50d532201b4e7149cb86f74321d39be9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert=20W=C3=B6rle?= <rwoerle@mibtec.de>
+Date: Fri, 26 Sep 2025 13:43:10 +0000
+Subject: [PATCH] only-exclude-main
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Robert Wörle <rwoerle@mibtec.de>
+---
+ src/lib/so.l | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/src/lib/so.l b/src/lib/so.l
+index 58fdd07..ad6be2a 100644
+--- a/src/lib/so.l
++++ b/src/lib/so.l
+@@ -16,16 +16,4 @@
+ }#
+ 
+ (exclude
+-   # Signals
+-   $Signal iSignal sigChk sig sigTerm sighandler signals
+-   # Readline
+-   initReadline rlHide rlShow _History tabComplete
+-   # Native FFI
+-   fetchChar natBuf natErr natRetFloat natRetDouble natRetBuf ffi _Nat _Native _Struct
+-   # Memory
+-   _Byte
+-   # Library
+    main )
+-
+-(patch
+-   (_getStdin (T . @X) (T -1)) )
+-- 
+2.34.1
+

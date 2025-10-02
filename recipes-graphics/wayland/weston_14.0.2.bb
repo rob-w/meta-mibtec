@@ -125,5 +125,9 @@ RDEPENDS:${PN} += "xkeyboard-config"
 RRECOMMENDS:${PN} = "weston-init liberation-fonts"
 RDEPENDS:${PN}-dev += "wayland-protocols-dev"
 
+PACKAGES += "${PN}-backend-vnc"
+FILES:${PN}-backend-vnc = "${libexecdir}/weston-vnc"
+RDEPENDS:${PN}-backend-vnc = "${PN}"
+
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM:${PN} = "--system weston-launch"
