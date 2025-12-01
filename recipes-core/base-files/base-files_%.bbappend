@@ -15,7 +15,7 @@ dirs755 = "/bin /boot /dev ${sysconfdir} ${sysconfdir}/default \
            /home ${prefix}/src ${localstatedir}/local \
            /media"
 
-dirs755 += "/data /target /media/net /media/sda /media/sda1 /media/card /media/emmc-boot /media/ram"
+dirs755 += "/edata /data /target /media/net /media/sda /media/sda1 /media/card /media/emmc-boot /media/ram"
 
 volatiles += "run"
 dirs1777 = "/tmp /run ${localstatedir}/volatile/tmp"
