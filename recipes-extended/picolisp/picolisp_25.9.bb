@@ -6,7 +6,7 @@ RPROVIDES:${PN} = "picolisp"
 
 SRC_URI += " \
 	file://0001-sysdef_target_arch.patch \
-	file://0001-add_soname-to-.so.patch \
+	file://0001-add-sonames.patch \
 	"
 
 do_compile() {
@@ -24,12 +24,30 @@ do_compile() {
 
 FILES:${PN} += "${libdir}/libpicolisp.so.${PV}"
 FILES:${PN} += "${libdir}/libpicolisp.so.1"
+
+FILES:${PN} += "${libdir}/libht.so.${PV}"
+FILES:${PN} += "${libdir}/libht.so.1"
+
+FILES:${PN} += "${libdir}/libext.so.${PV}"
+FILES:${PN} += "${libdir}/libext.so.1"
+
 FILES:${PN}-dev += "${libdir}/libpicolisp.so"
+FILES:${PN}-dev += "${libdir}/libht.so"
+FILES:${PN}-dev += "${libdir}/libext.so"
 
 do_install:append () {
 	install -d ${D}${libdir}
-	install -m 0755 ${S}/src/sysdef				${D}${libdir}/picolisp/bin/
-	install -m 0644 ${S}/lib/picolisp.so		${D}${libdir}/libpicolisp.so.${PV}
-	ln -sf  libpicolisp.so.${PV}				${D}${libdir}/libpicolisp.so.1
-	ln -sf  libpicolisp.so.1					${D}${libdir}/libpicolisp.so
+	install -m 0755 ${S}/src/sysdef			${D}${libdir}/picolisp/bin/
+	install -m 0644 ${S}/lib/picolisp.so	${D}${libdir}/libpicolisp.so.${PV}
+	ln -sf  libpicolisp.so.${PV}			${D}${libdir}/libpicolisp.so.1
+	ln -sf  libpicolisp.so.1				${D}${libdir}/libpicolisp.so
+
+	install -m 0644 ${S}/lib/ht.so			${D}${libdir}/libht.so.${PV}
+	ln -sf  libht.so.${PV}					${D}${libdir}/libht.so.1
+	ln -sf  libht.so.1						${D}${libdir}/libht.so
+
+	install -m 0644 ${S}/lib/ext.so			${D}${libdir}/libext.so.${PV}
+	ln -sf  libext.so.${PV}					${D}${libdir}/libext.so.1
+	ln -sf  libext.so.1						${D}${libdir}/libext.so
+
 }

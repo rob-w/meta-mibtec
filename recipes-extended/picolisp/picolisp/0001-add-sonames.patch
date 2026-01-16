@@ -1,0 +1,47 @@
+From beee47dfeb27b900250ea3268ea097229e13d42b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert=20W=C3=B6rle?= <rwoerle@mibtec.de>
+Date: Fri, 16 Jan 2026 14:47:46 +0000
+Subject: [PATCH] add sonames
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Robert Wörle <rwoerle@mibtec.de>
+---
+ src/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index d91a109..e7085ca 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -47,7 +47,7 @@ lib.bc: pico.h lib.c
+ # Base system as shared library
+ $(LIB)/picolisp.so: picolisp.so.bc
+ 	$(LLC) picolisp.so.bc -relocation-model=pic -o picolisp.so.s
+-	$(CC) picolisp.so.s -o $(LIB)/picolisp.so $(SHARED)
++	$(CC) picolisp.so.s -o $(LIB)/picolisp.so $(SHARED) -Wl,-soname,libpicolisp.so.1
+ 	$(STRIP) $(LIB)/picolisp.so
+ 
+ picolisp.so.bc: base.so.bc lib.so.bc
+@@ -66,7 +66,7 @@ lib.so.bc: pico.h lib.so.c
+ # Extension libraries
+ $(LIB)/ext.so: ext.bc
+ 	$(LLC) ext.bc -relocation-model=pic -o ext.s
+-	$(CC) ext.s -o $(LIB)/ext.so $(SHARED)
++	$(CC) ext.s -o $(LIB)/ext.so $(SHARED) -Wl,-soname,libext.so.1
+ 	$(STRIP) $(LIB)/ext.so
+ 
+ ext.bc: ext.ll
+@@ -77,7 +77,7 @@ ext.ll: $(INC) ext.l
+ 
+ $(LIB)/ht.so: ht.bc
+ 	$(LLC) ht.bc -relocation-model=pic -o ht.s
+-	$(CC) ht.s -o $(LIB)/ht.so $(SHARED)
++	$(CC) ht.s -o $(LIB)/ht.so $(SHARED) -Wl,-soname,libht.so.1
+ 	$(STRIP) $(LIB)/ht.so
+ 
+ ht.bc: ht.ll
+-- 
+2.34.1
+
