@@ -10,6 +10,7 @@ SRCREV = "1ccd5dbfdc47c164168f0064a6241731fd4286d3"
 SRC_URI = "git://github.com/picolisp/pil21.git;protocol=https;branch=master \
 	file://0001-weaken-vars.patch \
 	file://0001-only-exclude-main.patch \
+	file://0001-pil-native.patch \
 	"
 
 inherit autotools pkgconfig
@@ -76,6 +77,6 @@ includedir=\${prefix}/include
 Name: picolisp
 Description: PicoLisp interpreter/library
 Version: ${PV}
-Libs: -L\${libdir} -lpicolisp
+Libs: -L\${libdir} -lpicolisp -lht -lext
 EOF
 }

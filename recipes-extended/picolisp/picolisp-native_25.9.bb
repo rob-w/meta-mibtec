@@ -6,7 +6,7 @@ RPROVIDES:${PN} = "picolisp-native"
 
 inherit native
 
-SRC_URI += "file://0001-pil-native.patch"
+#SRC_URI += "file://0001-pil-native.patch"
 
 do_compile() {
 	oe_runmake -C ${S}/src \
