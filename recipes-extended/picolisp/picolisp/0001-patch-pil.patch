@@ -1,0 +1,29 @@
+From 47c534449907924b6d79aafafc5608aaf0a52b73 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert=20W=C3=B6rle?= <rwoerle@mibtec.de>
+Date: Mon, 23 Feb 2026 10:59:44 +0000
+Subject: [PATCH] fix pil
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Robert Wörle <rwoerle@mibtec.de>
+---
+ bin/pil | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/bin/pil b/bin/pil
+index 5e0501b..e3c6ab1 100755
+--- a/bin/pil
++++ b/bin/pil
+@@ -1,5 +1,3 @@
+-#!/usr/bin/picolisp /usr/lib/picolisp/lib.l
+-(load "@lib/net.l" "@lib/misc.l" "@lib/btree.l" "@lib/db.l" "@lib/pilog.l")
+-
+-`*Dbg
+-(docs "@doc/")
++#!/bin/sh
++# Shell wrapper for native picolisp
++exec "${BINDIR}/picolisp" "${LIBDIR}/picolisp/lib.l" "$@"
+-- 
+2.34.1
+

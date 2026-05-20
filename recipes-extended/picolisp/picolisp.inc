@@ -9,8 +9,6 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=034095b4fa32d26e4fcec43d09081f86"
 SRCREV = "1ccd5dbfdc47c164168f0064a6241731fd4286d3"
 SRC_URI = "git://github.com/picolisp/pil21.git;protocol=https;branch=master \
 	file://0001-weaken-vars.patch \
-	file://0001-only-exclude-main.patch \
-	file://0001-pil-native.patch \
 	"
 
 inherit autotools pkgconfig
@@ -19,15 +17,7 @@ PR = "25"
 
 TOOLCHAIN = "clang"
 TOOLCHAIN:forcevariable = "clang"
-
-do_configure:append() {
-	touch ${S}/src/base.ll
-	touch ${S}/src/ext.ll
-	touch ${S}/src/ht.ll
-}
-
 INSANE_SKIP:${PN} += "already-stripped"
-# file-rdeps"
 
 FILES:${PN}-staticdev = ""
 FILES:${PN} += "${libdir}/libpicolisp.so.${PV}"

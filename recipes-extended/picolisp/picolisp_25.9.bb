@@ -7,21 +7,23 @@ RPROVIDES:${PN} = "picolisp"
 SRC_URI += " \
 	file://0001-sysdef_target_arch.patch \
 	file://0001-add-sonames.patch \
+	file://0001-only-exclude-main.patch \
 	"
 
-TARGET_LDFLAGS += "-nostartfiles -Wl,-e,_start"
+#TARGET_LDFLAGS += "-nostartfiles -Wl,-e,_start"
 
 EXTRA_OEMAKE = "\
-    OS=${TARGET_OS} \
-    CPU=${TARGET_ARCH} \
-    CFLAGS='${TARGET_CFLAGS} -fno-integrated-as' \
-    LLC='${STAGING_BINDIR_NATIVE}/llc -march=${TARGET_ARCH}' \
-	LDFLAGS='${TARGET_LDFLAGS}' \
+	PIL=pil \
+	OS=${TARGET_OS} \
+	CPU=${TARGET_ARCH} \
+	CFLAGS='${TARGET_CFLAGS} -fno-integrated-as -fno-pie' \
+	LLC='${STAGING_BINDIR_NATIVE}/llc -march=${TARGET_ARCH}' \
+	LDFLAGS='${TARGET_LDFLAGS} -no-pie' \
 "
 
 do_compile() {
 	oe_runmake -C ${S}/src
-    oe_runmake -C ${S}/src so
+	oe_runmake -C ${S}/src so
 
 #	oe_runmake -C ${S}/src \
 #		OS=${TARGET_OS} CPU=${TARGET_ARCH} \
