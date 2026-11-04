@@ -4,3 +4,4 @@
 /dev/md
 /dev/dm-*
 /dev/mmcblk*
+/dev/nvme*
