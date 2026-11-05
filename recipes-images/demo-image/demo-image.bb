@@ -1,12 +1,13 @@
-#
 DESCRIPTION = "Demo image for MIBTEC Boards"
 IMAGE_INSTALL = "${CORE_IMAGE_EXTRA_INSTALL}"
 IMAGE_LINGUAS = "de-de en-us es-es fr-fr"
 IMAGE_FEATURES += "package-management ssh-server-openssh"
+IMAGE_NAME = "${IMAGE_BASENAME}${IMAGE_VERSION_SUFFIX}"
 
 LICENSE = "MIT"
 
 inherit core-image
+inherit extrausers
 
 KERNEL_STUFF = "kernel \
             kernel-devicetree \
