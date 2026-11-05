@@ -6,9 +6,9 @@ LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING.LESSER;md5=4fbd65380cdd255951079008b364516c"
 DEPENDS = ""
 INC_PR = "r0"
-SRC_URI = "http://libmodbus.org/site_media/build/libmodbus-${PV}.tar.gz"
-SRC_URI[md5sum] = "b1a8fd3a40d2db4de51fb0cbcb201806"
-SRC_URI[sha256sum] = "c8c862b0e9a7ba699a49bc98f62bdffdfafd53a5716c0e162696b4bf108d3637"
+SRC_URI = "https://github.com/stephane/libmodbus/releases/download/v${PV}/libmodbus-${PV}.tar.gz"
+SRC_URI[md5sum] = "bbe431b92f85a70eb74f9e8f157b3f8c"
+SRC_URI[sha256sum] = "72239f319b9b8483e3d393c5a60865d734fcff18a8abbb2486e389834a2f6ef1"
 
 inherit autotools
 
